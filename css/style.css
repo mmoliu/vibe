@@ -2,20 +2,41 @@ body {
 padding-left: 100px;
 padding-right: 100px;
 
+
 }
 .links {
  text-align: center;
+ /* clear:both; */
 }
 #link1 {
   float: left;
+  display:flex;
+  width:25%;
+  text-align: left;
+
+}
+
+#link1 h1 {
+  margin: auto;
 }
 
 #link2 {
-  display: inline;
-  float: center;
+  width: 50%;
+  float: left;
+  text-align: center;
+  /* margin: auto; */
+  display:flex;
+}
+#link2 h1 {
+  margin: auto;
 }
 
 #link3 {
-  display: inline;
   float: right;
+  display:flex;
+  text-align: right;
+  width:25%;
+}
+#link3 h1 {
+  margin: auto;
 }
