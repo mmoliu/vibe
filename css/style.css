@@ -1,9 +1,33 @@
-body {
+/* For the vibe.html page */
+.vibe{
+  background-image: url("http://getwallpapers.com/wallpaper/full/c/c/7/667533.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: aqua;
+      border:90% solid #ccc;
+  font-size: 20px
+}
+.center{
+  text-align: center;
+  font-style: bold;
+}
+
+.information{
+  text-align:center;
+}
+
+html{
+  font-family: helvetica;
+}
+
+
+
+/* For the main.html page */
+.main {
 padding-left: 100px;
 padding-right: 100px;
-
-
 }
+
 .links {
  text-align: center;
  /* clear:both; */
