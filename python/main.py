@@ -15,8 +15,6 @@ jinja_env = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-#meme_templates = ["https://imgflip.com/s/meme/Distracted-Boyfriend.jpg", "https://imgflip.com/s/meme/Is-This-A-Pigeon.jpg", "https://imgflip.com/s/meme/Success-Kid.jpg", "https://i.imgflip.com/2/2kbn1e.jpg", "https://i.imgflip.com/2/22bdq6.jpg"]
-
 #handler section
 class HomePage(webapp2.RequestHandler):
     #request handler is the parent
