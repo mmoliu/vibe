@@ -22,7 +22,32 @@ body {
   justify-content: flex-end;
 }
 
+
 body {
+=======
+.vibe {
+padding-left: 100px;
+padding-right: 100px;
+background-image: url("http://getwallpapers.com/wallpaper/full/c/c/7/667533.jpg");
+background-size: 100%;
+background-repeat: no-repeat;
+color: aqua;
+}
+
+.center{
+  text-align: center;
+  font-style: bold;
+}
+
+.information{
+  text-align:center;
+}
+
+html{
+  font-family: helvetica;
+}
+
+
 
 
 }
