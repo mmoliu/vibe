@@ -3,13 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>VIBE</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
   </head>
-  <body>
-    <h1>VIBE.</h1>
+  <body class="vibe">
+    <h1 class = "center">Vibe's Personality Test!</h1>
     <form method="post" action="/result"> <!-- /result takes you to the resultpage -->
-      <p>First Name </p><input type="text" name="fname"/>  <!--python searches for name -->
-      <p>Last Name </p><input type="text" name="lname"/>
-      <p>Choose your favorite color! </p>
+      <div class="information">
+      First Name: <input type="text" name="fname"/>  <!--python searches for name -->
+      Last Name: <input type="text" name="lname"/>
+      </div>
+      <br>
+      <h1 >Tell us about yourself!</h1>
+      <div class="options">
+      Choose your favorite color!
       <select name="color">
           <option value="pink">pink</option>
           <option value="black">black</option>
@@ -21,14 +27,18 @@
           <option value="green">green</option>
           <option value="purple">purple</option>
       </select>
-      <p>Which True Color personality are you?</p>
+      <br>
+      <br>
+      Which True Color personality are you?
       <select name="TrueColor">
           <option value="Blue">blue</option>
           <option value="Gold">gold</option>
           <option value="Green">green</option>
           <option value="Orange">orange</option>
       </select>
-      <p>Choose your favorite activity out of this list! </p>
+      <br>
+      <br>
+      Choose your favorite activity out of this list!
       <select name="activity">
           <option value="a1">video games</option>
           <option value="a2">sports</option>
@@ -39,7 +49,9 @@
           <option value="a7">debate</option>
           <option value="a8">watch movies</option>
       </select>
-      <p>Choose your favorite music genre! </p>
+      <br>
+      <br>
+      Choose your favorite music genre!
       <select name="music">
           <option value="m1">kpop</option>
           <option value="m2">country</option>
@@ -48,6 +60,8 @@
           <option value="m5">r&b</option>
           <option value="m6">indie</option>
       </select>
+        </div>
+        <br>
 
       <input type ="submit" value="Go!"/>
     </form>

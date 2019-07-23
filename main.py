@@ -21,16 +21,16 @@ class HomePage(webapp2.RequestHandler):
     #gives us access that everything webapp has in its code
 
     def get(self): #request of getting stuff from a website
-        home_dict {
+        home_dict={
         }
-        welcome_template = jinja_env.get_template("main.html")
+        welcome_template = jinja_env.get_template("html/main.html")
         self.response.write(welcome_template.render(home_dict)) #render takes in the jinja dict
 
 
 
 class Vibe(webapp2.RequestHandler):
     def get(self):
-        welcome_template = jinja_env.get_template("vibe.html")
+        vibe_template = jinja_env.get_template("html/vibe.html")
         #self.response.write(welcome_template.render())
 #
 class ResultPage(webapp2.RequestHandler):
@@ -43,7 +43,7 @@ class ResultPage(webapp2.RequestHandler):
         music = self.request.get("music")
         user = Person(fName = fname, lName = lName, color= favColor, trueColor= trueColor, activity= favActivity, music=music)
         user.put()
-        result_template = jinja_env.get_template("results.html")
+        result_template = jinja_env.get_template("/html/results.html")
         #self.response.write(result_template.render(data_dict))
 
 
