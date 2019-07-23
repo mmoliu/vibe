@@ -1,9 +1,58 @@
+
 body {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+/*--- navigation bar ---*/
+.navbar {
+  background: #FFAB00;
+}
+.nav-link,
+.navbar-brand {
+  color: #FFAB00;
+  cursor: pointer;
+}
+.nav-link {
+  margin-right: 1em !important;
+}
+.nav-link:hover {
+  color: #FFAB00;
+}
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.vibe {
 padding-left: 100px;
 padding-right: 100px;
-
-
+background-image: url("http://getwallpapers.com/wallpaper/full/c/c/7/667533.jpg");
+background-size: 100%;
+background-repeat: no-repeat;
+color: aqua;
 }
+
+.center{
+  text-align: center;
+  font-style: bold;
+}
+
+.information{
+  text-align:center;
+}
+
+html{
+  font-family: helvetica;
+}
+
+
+
+/* For the main.html page */
+.main {
+padding-left: 100px;
+padding-right: 100px;
+}
+
 .links {
  text-align: center;
  /* clear:both; */
@@ -39,4 +88,12 @@ padding-right: 100px;
 }
 #link3 h1 {
   margin: auto;
+}
+
+.bg-color{
+  background-image: url("https://pcbeachspringbreak.com/wp-content/uploads/2015/09/Friends-Having-Fun.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+
 }

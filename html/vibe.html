@@ -3,13 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>VIBE</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
   </head>
-  <body>
-    <h1>VIBE.</h1>
+  <body class="vibe">
+    <h1 class = "center">Vibe's Personality Test!</h1>
     <form method="post" action="/result"> <!-- /result takes you to the resultpage -->
-      First Name <input type="text" name="fname"/>  <!--python searches for name -->
-      Last Name <input type="text" name="lname"/>
+      <div class="information">
+      First Name: <input type="text" name="fname"/>  <!--python searches for name -->
+      Last Name: <input type="text" name="lname"/>
+      </div>
       <br>
+      <h1 >Tell us about yourself!</h1>
+      <div class="options">
       Choose your favorite color!
       <select name="color">
           <option value="pink">pink</option>
@@ -23,6 +28,7 @@
           <option value="purple">purple</option>
       </select>
       <br>
+      <br>
       Which True Color personality are you?
       <select name="TrueColor">
           <option value="Blue">blue</option>
@@ -30,6 +36,7 @@
           <option value="Green">green</option>
           <option value="Orange">orange</option>
       </select>
+      <br>
       <br>
       Choose your favorite activity out of this list!
       <select name="activity">
@@ -43,6 +50,7 @@
           <option value="a8">watch movies</option>
       </select>
       <br>
+      <br>
       Choose your favorite music genre!
       <select name="music">
           <option value="m1">kpop</option>
@@ -52,6 +60,8 @@
           <option value="m5">r&b</option>
           <option value="m6">indie</option>
       </select>
+        </div>
+        <br>
 
       <input type ="submit" value="Go!"/>
     </form>
