@@ -68,8 +68,8 @@ class ResultPage(webapp2.RequestHandler):
         user.put()
 
         data_dict = {
-            top_one = vibesList[0][0]
-            x = (vibesList[0][1]/6)
+            "top_one": vibesList[0][0],
+            "x" : (vibesList[0][1]/6)
         }
 
         result_template = jinja_env.get_template("/html/results.html")
