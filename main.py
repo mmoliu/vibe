@@ -63,12 +63,12 @@ class ResultPage(webapp2.RequestHandler):
         favActivity = self.request.get("activity")
         music = self.request.get("music")
         user = Person(fName = firstName, lName = lastName, color= favColor, trueColor= trueColor, activity= favActivity, music=music)
-        vibesList= getVibes(user) #list of tuples in order that have ppl's name, and similarity index
+        vibesList= getVibes(user)[0] #list of tuples in order that have ppl's name, and similarity index
         user.put()
 
         data_dict = {
             "top_one": vibesList[0][0],
-            "x" : (vibesList[0][1]/6)
+            
         }
 
         result_template = jinja_env.get_template("/html/results.html")
