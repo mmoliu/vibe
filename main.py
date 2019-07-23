@@ -17,16 +17,6 @@ jinja_env = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-
-#getClassKeys
-# def getClassKeys(person):
-#     classAttributes = []
-#     lppl = Person._properties
-#     for attr in lppl:
-#         classAttributes.append(attr)
-#     return classAttributes
-#percentMatch by comparing attributes
-
 def percentMatch(user, person):
     simScore = 0
     lppl = Person._properties
@@ -74,10 +64,15 @@ class ResultPage(webapp2.RequestHandler):
         favActivity = self.request.get("activity")
         music = self.request.get("music")
         user = Person(fName = fname, lName = lName, color= favColor, trueColor= trueColor, activity= favActivity, music=music)
+        vibesList= getVibes(user).items() #list of tuples in order that have ppl's name, and similarity index
         user.put()
-        result_template = jinja_env.get_template("/html/results.html")
 
-        #self.response.write(result_template.render(data_dict))
+        data_dict = {
+            top_one = vibesList[0][0]
+        }
+
+        result_template = jinja_env.get_template("/html/results.html")
+        self.response.write(result_template.render(data_dict))
 
 
 
