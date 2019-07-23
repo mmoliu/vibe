@@ -1,4 +1,3 @@
-
 body {
   padding: 0;
   margin: 0;
@@ -23,6 +22,9 @@ body {
   justify-content: flex-end;
 }
 
+
+body {
+=======
 .vibe {
 padding-left: 100px;
 padding-right: 100px;
@@ -47,12 +49,8 @@ html{
 
 
 
-/* For the main.html page */
-.main {
-padding-left: 100px;
-padding-right: 100px;
-}
 
+}
 .links {
  text-align: center;
  /* clear:both; */
@@ -95,5 +93,10 @@ padding-right: 100px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
+  height: 1000px;
+}
 
+.top-nav-collapse {
+  background: black;
+  padding: 25px 0;
 }
