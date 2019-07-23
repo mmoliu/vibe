@@ -29,7 +29,6 @@ def percentMatch(user, person):
 def getVibes(user):
     person_query= Person.query().fetch()
     similarityIndex = {}
-    attrList = getClassKeys(user) #list of class attributes
     for person in person_query:
         similarityIndex[str(person.fName) + " " + str(person.lName)] = percentMatch(user, person)
     sortedSimIndex = sorted(similarityIndex.items(), key=operator.itemgetter(1))
@@ -51,8 +50,8 @@ class HomePage(webapp2.RequestHandler):
 
 class Vibe(webapp2.RequestHandler):
     def get(self):
-        vibe_template = jinja_env.get_template("html/vibe.html")
-        #self.response.write(welcome_template.render())
+        vibe_template = jinja_env.get_template("/html/vibe.html")
+        self.response.write(vibe_template.render())
 
 
 class ResultPage(webapp2.RequestHandler):
@@ -63,8 +62,8 @@ class ResultPage(webapp2.RequestHandler):
         trueColor = self.request.get("TrueColor")
         favActivity = self.request.get("activity")
         music = self.request.get("music")
-        user = Person(fName = fname, lName = lName, color= favColor, trueColor= trueColor, activity= favActivity, music=music)
-        vibesList= getVibes(user).items() #list of tuples in order that have ppl's name, and similarity index
+        user = Person(fName = firstName, lName = lastName, color= favColor, trueColor= trueColor, activity= favActivity, music=music)
+        vibesList= getVibes(user) #list of tuples in order that have ppl's name, and similarity index
         user.put()
 
         data_dict = {
