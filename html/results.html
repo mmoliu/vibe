@@ -4,7 +4,15 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css"/>
   </head>
   <body class= "results">
-    <h1>Results:</h1>
+    <h1>Results</h1>
+    <h2>You VIBE with {{top_one}} {{x}} % </h2>
+    <h2>TOP 3 VIBES: </h2>
+    <p>{% for i in range(1, len(vibesList))%}
+      vibesList[i][0] : float((vibesList[i][1]/6), 3)
+      {%endfor%}
+
+    </p>
+
 
   </body>
 </html>
