@@ -1,71 +1,299 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Welcome to Vibe</title>
-    <style>
-    body{
-      background-color: #00ffff
-    }
-    </style>
+    <html lang="en">
+  <head>
+    <title>Bootstrap Tutorial Sample Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300|Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../css/bethany-style.css">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <title>Homepage</title>
-  </head>
-  <body>
-    <center>
-      <div class="links">
-        <div id="link1">
-        <h1 id="home"> <a> Home </a> </h1>  <!-- need to add the tag to the vibe html  -->
+    </head>
+    <body>
+      <!--header-->
+      <header class="main-header" id="header">
+        <div class="bg-color">
+          <!--nav-->
+          <nav class="nav navbar-default navbar-fixed-top">
+            <div class="container">
+              <div class="col-md-12">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="fa fa-bars"></span>
+                            </button>
+                  <a href="index.html" class="navbar-brand">Vibe</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#header">Home</a></li>
+                    <li><a href="#feature">Login</a></li>
+                    <li><a href="#portfolio">Vibe</a></li>
+                    <li><a href="#contact">Results</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <!--/ nav-->
+          <div class="container text-center">
+            <div class="wrapper wow fadeInUp delay-05s animated" style="visibility: visible; animation-name: fadeInUp;">
+              <h3 class="title">Vibe</h3>
+              <h6 class="sub-title">RELAXING, CHILLING, AND MOST IMPORTANTLY... VIBING</h6>
+              <button type="submit" class="btn btn-submit">Take our Personality Test now!</button>
+            </div>
+          </div>
         </div>
-
-        <div id="link2">
-        <h1 id="vibe"> <a> VIBE </a> </h1>  <!-- need to add the tag to the vibe html  -->
+      </header>
+      <!--/ header-->
+      <!---->
+      <section id="cta-1">
+        <div class="container">
+          <div class="row">
+            <div class="cta-info text-center">
+              <h3><span class="dec-tec">“</span>The greatest gift of life is friendship.<span class="dec-tec">”</span> -Hubert H. Humphrey</h3>
+            </div>
+          </div>
         </div>
-
-        <div id="link3">
-        <h1 id="results"> <a> Results </a> </h1>  <!-- need to add the tag to the vibe html  -->
+      </section>
+      <!---->
+      <!---->
+      <section id="feature" class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 wow fadeInLeft delay-05s animated" style="visibility: visible; animation-name: fadeInLeft;">
+              <div class="section-title">
+                <h2 class="head-title">Features</h2>
+                <hr class="botm-line">
+                <p class="sec-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="col-md-6 wow fadeInRight delay-02s animated" style="visibility: visible; animation-name: fadeInRight;">
+                <div class="icon">
+                  <i class="fa fa-paint-brush"></i>
+                </div>
+                <div class="icon-text">
+                  <h3 class="txt-tl">Make friends with people from all over the world</h3>
+                  <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+                </div>
+              </div>
+              <div class="col-md-6 wow fadeInRight delay-02s animated" style="visibility: visible; animation-name: fadeInRight;">
+                <div class="icon">
+                  <i class="fa fa-cogs"></i>
+                </div>
+                <div class="icon-text">
+                  <h3 class="txt-tl">Find exciting places to vist with your new friends</h3>
+                  <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+                </div>
+              </div>
+              <div class="col-md-6 wow fadeInRight delay-04s animated" style="visibility: visible; animation-name: fadeInRight;">
+                <div class="icon">
+                  <i class="fa fa-mobile"></i>
+                </div>
+                <div class="icon-text">
+                  <h3 class="txt-tl">Use vibe to access your friend's social medias</h3>
+                  <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+                </div>
+              </div>
+              <div class="col-md-6 wow fadeInRight delay-04s animated" style="visibility: visible; animation-name: fadeInRight;">
+                <div class="icon">
+                  <i class="fa fa-desktop"></i>
+                </div>
+                <div class="icon-text">
+                  <h3 class="txt-tl">Track when your friends are in your area</h3>
+                  <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+                </div>
+              </div>
+              <div class="col-md-6 wow fadeInRight delay-06s animated" style="visibility: visible; animation-name: fadeInRight;">
+                <div class="icon">
+                  <i class="fa fa-lightbulb-o"></i>
+                </div>
+                <div class="icon-text">
+                  <h3 class="txt-tl">High Coversion</h3>
+                  <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+                </div>
+              </div>
+              <div class="col-md-6 wow fadeInRight delay-06s animated" style="visibility: visible; animation-name: fadeInRight;">
+                <div class="icon">
+                  <i class="fa fa-clock-o"></i>
+                </div>
+                <div class="icon-text">
+                  <h3 class="txt-tl">Save Tons of Time</h3>
+                  <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+      <!---->
+      <section class="section-padding parallax bg-image-2 section wow fadeIn delay-08s animated" id="cta-2" style="visibility: visible; animation-name: fadeIn;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="cta-txt">
+                <h3>Subscribe For Updates</h3>
+                <p>Join our 1000+ subscribers and get access to the latest tools, freebies, product announcements and much more!</p>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <a href="#" class="btn btn-submit">Take the Personality Test now!</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!---->
+      <!---->
+      <section class="section-padding wow fadeInUp delay-02s animated" id="portfolio" style="visibility: visible; animation-name: fadeInUp;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-sm-12">
+              <div class="section-title">
+                <h2 class="head-title">Portfolio</h2>
+                <hr class="botm-line">
+                <p class="sec-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p>
+              </div>
+            </div>
+            <div class="col-md-9 col-sm-12">
+              <div class="col-md-4 col-sm-6 padding-right-zero">
+                <div class="portfolio-box design">
+                  <img src="img/port01.jpg" alt="" class="img-responsive">
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 padding-right-zero">
+                <div class="portfolio-box design">
+                  <img src="img/port02.jpg" alt="" class="img-responsive">
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 padding-right-zero">
+                <div class="portfolio-box design">
+                  <img src="img/port03.jpg" alt="" class="img-responsive">
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 padding-right-zero">
+                <div class="portfolio-box design">
+                  <img src="img/port04.jpg" alt="" class="img-responsive">
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 padding-right-zero">
+                <div class="portfolio-box design">
+                  <img src="img/port05.jpg" alt="" class="img-responsive">
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 padding-right-zero">
+                <div class="portfolio-box design">
+                  <img src="img/port06.jpg" alt="" class="img-responsive">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!---->
+      <!---->
+      <section class="section-padding wow fadeInUp delay-05s animated" id="contact" style="visibility: visible; animation-name: fadeInUp;">
+        <div class="container">
+          <div class="row white">
+            <div class="col-md-8 col-sm-12">
+              <div class="section-title">
+                <h2 class="head-title black">Contact Us</h2>
+                <hr class="botm-line">
+                <p class="sec-para black">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p>
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+              <div class="col-md-4 col-sm-6" style="padding-left:0px;">
+                <h3 class="cont-title">Email Us</h3>
+                <div id="sendmessage">Your message has been sent. Thank you!</div>
+                <div id="errormessage"></div>
+                <div class="contact-info">
+                  <form action="" method="post" role="form" class="contactForm">
+                    <div class="form-group">
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                      <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                      <div class="validation"></div>
+                    </div>
 
-      <h3>About Vibe!</h3>
-        <p>Vibe is a website that allows for people to "vibe" with others. In order to begin this process, you will be required
-        to take a personality test that descibes yourself. After, we will match you up with people who have similar intrests in you!
-        To begin just click on the "VIBE" button! Have fun!</p>
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                      <div class="validation"></div>
+                    </div>
 
-      <font face="Impact" size="70" color="black">Vibe</font>
-        <br>
-    <font face="Impact" size="70" color="black">The app that finds you friends just like you!</font>
-    <br>
-      <img height="400px" width="450px"
-        src="https://making-the-web.com/sites/default/files/clipart/158008/image-people-talking-158008-2043078.jpg">
-      <img height="400px" width="450px"
-        src="https://s3.envato.com/files/184890002/0Q7A7973.jpg">
-      <img height="400px" width="450px"
-        src="https://previews.123rf.com/images/viewapart/viewapart1803/viewapart180300010/98830952-group-of-multiracial-happy-friends-having-fun-playing-sport-beach-games-international-concept-of-sum.jpg">
+                    <div class="form-group">
+                      <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                      <div class="validation"></div>
+                    </div>
+                    <button type="submit" class="btn btn-send">Send</button>
+                  </form>
+                </div>
 
-      <font face="Impact" size="70" color="black">Features of our App:</font>
-      <ul style="list-style-type:circle;">
-        <li>Make friends with people from all over the world</li>
-        <li>Find exciting places to vist with your new friends</li>
-        <li>Use Vibe to access your friend's social media accounts</li>
-        <li>Track when your new friends are your area</li>
-      </ul>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <h3 class="cont-title">Visit Us</h3>
+                <div class="location-info">
+                  <p class="white"><span aria-hidden="true" class="fa fa-map-marker"></span>Via Principe Amedeo 9, Torino, Italy</p>
+                  <p class="white"><span aria-hidden="true" class="fa fa-phone"></span>Phone: 0039 333 12 68 347</p>
+                  <p class="white"><span aria-hidden="true" class="fa fa-envelope"></span>Email: <a href="" class="link-dec">hi@yourdomain.com</a></p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="contact-icon-container hidden-md hidden-sm hidden-xs">
+                  <span aria-hidden="true" class="fa fa-envelope-o"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!---->
+      <!---->
+      <footer class="" id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-7 footer-copyright">
+              © Bethany Theme - All rights reserved
+              <div class="credits">
+                <!--
+                  All the links in the footer should remain intact.
+                  You can delete the links only if you purchased the pro version.
+                  Licensing information: https://bootstrapmade.com/license/
+                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Bethany
+                -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              </div>
+            </div>
+            <div class="col-sm-5 footer-social">
+              <div class="pull-right hidden-xs hidden-sm">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!---->
+      <!--contact ends-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/jquery.easing.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/wow.js"></script>
+      <script src="js/custom.js"></script>
+      <script src="contactform/contactform.js"></script>
 
-  <!-- /> = </_> -->
-
-      <a href="about">Link to about page</a>
-    <center/>
 
 
-  </body>
+    </body>
+
+
 </html>
-
-
-
-
-
-
-
-  </body>
-</html>
-=======

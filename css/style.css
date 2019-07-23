@@ -1,4 +1,28 @@
 body {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+/*--- navigation bar ---*/
+.navbar {
+  background: #FFAB00;
+}
+.nav-link,
+.navbar-brand {
+  color: #FFAB00;
+  cursor: pointer;
+}
+.nav-link {
+  margin-right: 1em !important;
+}
+.nav-link:hover {
+  color: #FFAB00;
+}
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+body {
 padding-left: 100px;
 padding-right: 100px;
 
@@ -39,4 +63,12 @@ padding-right: 100px;
 }
 #link3 h1 {
   margin: auto;
+}
+
+.bg-color{
+  background-image: url("https://pcbeachspringbreak.com/wp-content/uploads/2015/09/Friends-Having-Fun.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+
 }
