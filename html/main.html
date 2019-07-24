@@ -32,7 +32,14 @@
               <ul class="nav navbar-nav">
 
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="">Account</a></li>
+                <li>
+                  {%if not existing_user%}
+                  <a href="/register"> Sign In </a>
+                  {%else%}
+                  <a href="">Account</a> <!-- make sure to add profile link later -->
+                  {%endif%}
+
+                </li>
                 <li><a href="/vibe">Vibe</a></li>
                 <li><a href="/results">Results</a></li>
 
