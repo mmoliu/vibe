@@ -31,7 +31,7 @@ def getVibes(user):
     similarityIndex = {}
     for person in person_query:
         similarityIndex[str(person.fName) + " " + str(person.lName)] = percentMatch(user, person)
-    sortedSimIndex = sorted(similarityIndex.items(), key=operator.itemgetter(1))
+    sortedSimIndex = sorted(similarityIndex.items(), key=operator.itemgetter(1), reverse=True)
     return sortedSimIndex #returns a dictionary with the keys sorted by its value
 
 
@@ -63,12 +63,30 @@ class ResultPage(webapp2.RequestHandler):
         favActivity = self.request.get("activity")
         music = self.request.get("music")
         user = Person(fName = firstName, lName = lastName, color= favColor, trueColor= trueColor, activity= favActivity, music=music)
-        vibesList= getVibes(user)[0] #list of tuples in order that have ppl's name, and similarity index
+        vibesList= getVibes(user) #list of tuples in order that have ppl's name, and similarity index
         user.put()
 
         data_dict = {
-            "top_one": vibesList[0][0],
-            
+            "top_one": vibesList[1][0],
+            #"lenVibes": len(vibesList[0][1]),
+            "vibesList": getVibes(user),
+            "x1": str(round(((float((vibesList[1][1])*100))/6),2)),
+            "second":  vibesList[2][0],
+            "x2": str(round(((float((vibesList[1][1])*100))/6),2)),
+            "third":  vibesList[3][0],
+            "x3": str(round(((float((vibesList[1][1])*100))/6),2)),
+            "fourth":  vibesList[4][0],
+            "x4": str(round(((float((vibesList[1][1])*100))/6),2)),
+
+            "bottom": vibesList[len(vibesList)-1][0],
+            "x5": str(round(((float((vibesList[len(vibesList)-1][1])*100))/6),2)),
+            "secondBot":vibesList[len(vibesList)-2][0],
+            "x6": str(round(((float((vibesList[len(vibesList)-2][1])*100))/6),2)),
+            "thirdBot":vibesList[len(vibesList)-3][0],
+            "x7": str(round(((float((vibesList[len(vibesList)-3][1])*100))/6),2)),
+            "fourthBot":vibesList[len(vibesList)-4][0],
+            "x8": str(round(((float((vibesList[len(vibesList)-4][1])*100))/6),2))
+
         }
 
         result_template = jinja_env.get_template("/html/results.html")
