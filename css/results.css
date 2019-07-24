@@ -10,8 +10,8 @@ h1{
   padding-left: 100px;
   padding-right: 100px;
   background-image:url("https://ak9.picdn.net/shutterstock/videos/112219/thumb/1.jpg");
-  background-size: 100%;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 div{
