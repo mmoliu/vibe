@@ -2,6 +2,7 @@
 import webapp2  #gives access to Google's deployment code
 import jinja2
 import os
+from google.appengine.api import users
 from models import Person
 import operator
 #libraries for api_version
@@ -17,6 +18,7 @@ jinja_env = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+# functions!!
 def percentMatch(user, person):
     simScore = 0
     lppl = Person._properties
@@ -30,7 +32,7 @@ def getVibes(user):
     person_query= Person.query().fetch()
     similarityIndex = {}
     for person in person_query:
-        similarityIndex[str(person.fName) + " " + str(person.lName)] = percentMatch(user, person)
+        similarityIndex[str(person.first_name) + " " + str(person.last_name)] = percentMatch(user, person)
     sortedSimIndex = sorted(similarityIndex.items(), key=operator.itemgetter(1), reverse=True)
     return sortedSimIndex #returns a dictionary with the keys sorted by its value
 
@@ -42,6 +44,35 @@ class HomePage(webapp2.RequestHandler):
     #gives us access that everything webapp has in its code
 
     def get(self): #request of getting stuff from a website
+
+        #part of the copied bit
+        user = users.get_current_user() # will return a user if someone is signed in, if not, none
+        if user:
+            email_address = user.nickname()
+            self.response.write("You are logged in!")
+            logout_url = users.create_logout_url('/')
+            logout_button = "<a href='%s> Log out </a>" % logout_url
+
+            existing_user = Person.query().filter(Person.email == email_address).get() #query if we already have that email #get pulls only one
+            if existing_user:
+                pass
+            #self.response.write("You are logged in " + email_address +"!")
+        else:
+            self.response.write("You are a new user, please provide info!")
+            login_url = users.create_login_url('/')
+            login_button = "<a href='%s'> Sign In </a>" % login_url
+            self.response.write("Please log in! <br>" + login_button)
+
+        def post(self):
+            user = users.get_current_user()
+            if user:
+                current_user = Person(
+                    first_name=self.request.get('first_name'),
+                    email = self.request.get("email_address"),
+
+                )
+                current_user.put()
+                self.response.write("Thank you for registering!")
         home_dict={
         }
         welcome_template = jinja_env.get_template("html/main.html")
@@ -50,11 +81,31 @@ class HomePage(webapp2.RequestHandler):
 
 class Vibe(webapp2.RequestHandler):
     def get(self):
+        redirect= ""
+        user = users.get_current_user() # will return a user if someone is signed in, if not, none
+        if user:
+            email_address = user.nickname()
+
+            existing_user = Person.query().filter(Person.email == email_address).get() #query if we already have that email #get pulls only one
+            if existing_user:
+                pass
+            self.response.write("You are logged in " + email_address +"!")
+        else:
+            redirect = '<meta http-equiv="Refresh" content="0.5; url=/register">'
+
+        meta_data ={
+         "redirect": redirect,
+        }
+
+        # if not existing_user or not user:
+        #     self.response.write("<meta http-equiv="Refresh" content="0.5; url=/register" />")
+
         vibe_template = jinja_env.get_template("/html/vibe.html")
-        self.response.write(vibe_template.render())
+        self.response.write(vibe_template.render(meta_data))
 
 
 class ResultPage(webapp2.RequestHandler):
+
     def post(self):
         firstName = self.request.get("fname")
         lastName = self.request.get("lname")
@@ -62,14 +113,26 @@ class ResultPage(webapp2.RequestHandler):
         trueColor = self.request.get("TrueColor")
         favActivity = self.request.get("activity")
         music = self.request.get("music")
-        user = Person(fName = firstName, lName = lastName, color= favColor, trueColor= trueColor, activity= favActivity, music=music)
-        vibesList= getVibes(user) #list of tuples in order that have ppl's name, and similarity index
-        user.put()
+        user = users.get_current_user()
+        if user:
+            current_user = Person.query().filter(Person.email == email_address).get()
+            current_user.first_name = firstName
+            current_user.last_name = lastName
+            current_user.color = favColor
+            current_user.trueColor= trueColor
+            current_user.activity= favActivity
+            current_user.music=music
+            vibesList= getVibes(current_user) #list of tuples in order that have ppl's name, and similarity index
+            current_user.put()
+        else:
+                noacc_user = Person(first_name = firstName, last_name = lastName, color= favColor, trueColor= trueColor, activity= favActivity, music=music)
+                vibesList= getVibes(noacc_user) #list of tuples in order that have ppl's name, and similarity index
+                noacc_user.put()
 
         data_dict = {
             "top_one": vibesList[1][0],
             #"lenVibes": len(vibesList[0][1]),
-            "vibesList": getVibes(user),
+            "vibesList": vibesList,
             "x1": str(round(((float((vibesList[1][1])*100))/6),2)),
             "second":  vibesList[2][0],
             "x2": str(round(((float((vibesList[1][1])*100))/6),2)),
@@ -92,6 +155,36 @@ class ResultPage(webapp2.RequestHandler):
         result_template = jinja_env.get_template("/html/results.html")
         self.response.write(result_template.render(data_dict))
 
+class Register(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user() # will return a user if someone is signed in, if not, none
+        if user:
+            email_address = user.nickname()
+            self.response.write("You are logged in! ")
+            logout_url = users.create_logout_url('/')
+            logout_button = "<a href='%s'> Log out </a>" % logout_url
+            self.response.write("Log out here: <br>"+ logout_button)
+            #self.response.write("You are logged in " + email_address +"!")
+        else:
+            self.response.write("You are a new user, please provide info! ")
+            login_url = users.create_login_url('/')
+            login_button = "<a href='%s'> Sign In </a>" % login_url
+            self.response.write("Please log in! <br>" + login_button)
+
+        reg_dict ={
+        }
+        register_template = jinja_env.get_template("/html/register.html")
+        self.response.write(register_template.render(reg_dict))
+    def post(self):
+        user = users.get_current_user()
+        if user:
+            current_user = Person(
+                first_name=self.request.get('first_name'),
+                email = self.request.get("email_address"),
+
+            )
+            current_user.put()
+            self.response.write("Thank you for registering!")
 
 
 #initialization
@@ -99,7 +192,8 @@ app = webapp2.WSGIApplication(
     [
     ('/', HomePage),
     ('/result', ResultPage),
-    ('/vibe', Vibe)
+    ('/vibe', Vibe),
+    ('/register', Register)
     ], debug = True
 
     #when you load up your application, and it ends w slash, this class should be handling all requests
