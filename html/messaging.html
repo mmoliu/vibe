@@ -8,7 +8,13 @@
 
   <ul id="messages"></ul>
   <div/>
-  <form method="post" action="/result">
+  <div id="messages">
+    {%for msg in messages%}
+    {{msg}}
+    <br>
+    {%endfor%}
+  </div>
+  <form method="post" action="/messaging">
     <input type="text" name="text"/>
   </form>
 
