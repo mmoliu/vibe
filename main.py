@@ -86,8 +86,8 @@ class Vibe(webapp2.RequestHandler):
         if user:
             email_address = user.nickname()
 
-            existing_user = Person.query().filter(Person.email == email_address).get() #query if we already have that email #get pulls only one
-            if existing_user:
+            current_user = Person.query().filter(Person.email == email_address).get() #query if we already have that email #get pulls only one
+            if current_user:
                 pass
             self.response.write("You are logged in " + email_address +"!")
         else:
@@ -114,8 +114,10 @@ class ResultPage(webapp2.RequestHandler):
         favActivity = self.request.get("activity")
         music = self.request.get("music")
         user = users.get_current_user()
+        email_address = user.nickname()
         if user:
             current_user = Person.query().filter(Person.email == email_address).get()
+            print(current_user)
             current_user.first_name = firstName
             current_user.last_name = lastName
             current_user.color = favColor
@@ -123,11 +125,12 @@ class ResultPage(webapp2.RequestHandler):
             current_user.activity= favActivity
             current_user.music=music
             vibesList= getVibes(current_user) #list of tuples in order that have ppl's name, and similarity index
+            print(vibesList)
             current_user.put()
-        else:
-                noacc_user = Person(first_name = firstName, last_name = lastName, color= favColor, trueColor= trueColor, activity= favActivity, music=music)
-                vibesList= getVibes(noacc_user) #list of tuples in order that have ppl's name, and similarity index
-                noacc_user.put()
+        # else:
+        #         noacc_user = Person(first_name = firstName, last_name = lastName, color= favColor, trueColor= trueColor, activity= favActivity, music=music)
+        #         vibesList= getVibes(noacc_user) #list of tuples in order that have ppl's name, and similarity index
+        #         noacc_user.put()
 
         data_dict = {
             "top_one": vibesList[1][0],
@@ -160,14 +163,30 @@ class Register(webapp2.RequestHandler):
         user = users.get_current_user() # will return a user if someone is signed in, if not, none
         if user:
             email_address = user.nickname()
+            existing_user = Person.query().filter(Person.email == email_address).get() #query if we already have that email #get pulls only one
+            if not existing_user:
+                email_address = user.nickname()
+                current_user = Person(
+                    first_name="something",
+                    email = email_address,
+                    last_name="None",
+                    color="None",
+                    trueColor="None",
+                    activity="None",
+                    music = "None",
+
+                )
+                current_user.put()
+                self.response.write("Thank you for registering!")
+
             self.response.write("You are logged in! ")
-            logout_url = users.create_logout_url('/')
+            logout_url = users.create_logout_url('/register')
             logout_button = "<a href='%s'> Log out </a>" % logout_url
             self.response.write("Log out here: <br>"+ logout_button)
             #self.response.write("You are logged in " + email_address +"!")
         else:
             self.response.write("You are a new user, please provide info! ")
-            login_url = users.create_login_url('/')
+            login_url = users.create_login_url('/register')
             login_button = "<a href='%s'> Sign In </a>" % login_url
             self.response.write("Please log in! <br>" + login_button)
 
@@ -175,16 +194,6 @@ class Register(webapp2.RequestHandler):
         }
         register_template = jinja_env.get_template("/html/register.html")
         self.response.write(register_template.render(reg_dict))
-    def post(self):
-        user = users.get_current_user()
-        if user:
-            current_user = Person(
-                first_name=self.request.get('first_name'),
-                email = self.request.get("email_address"),
-
-            )
-            current_user.put()
-            self.response.write("Thank you for registering!")
 
 
 #initialization
