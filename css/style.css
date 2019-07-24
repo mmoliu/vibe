@@ -35,13 +35,19 @@ background-size: cover;
 
 .information{
   text-align:center;
+  color:greenyellow;
+  font-size: 15px
 }
 
 html{
   font-family: helvetica;
 }
 
+.options{
+  color:greenyellow;
+  font-size: 15px
 
+}
 
 
 }
@@ -96,9 +102,9 @@ html{
 }
 
 .vibe-title {
-  font-size: 90px;
+  font-size: 60px;
   font-weight: 700;
-  color: #fff;
+  color: greenyellow;
   line-height: 88px;
   letter-spacing: 4px;
   opacity: 1;
@@ -107,9 +113,9 @@ html{
 }
 
 .vibe-sub-title {
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 700;
-  color: #fff;
+  color: greenyellow;
   line-height: 10px;
   letter-spacing: 1px;
   opacity: 1;

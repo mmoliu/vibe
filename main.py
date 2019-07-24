@@ -92,6 +92,11 @@ class ResultPage(webapp2.RequestHandler):
         result_template = jinja_env.get_template("/html/results.html")
         self.response.write(result_template.render(data_dict))
 
+class DiscussionPage(webapp2.RequestHandler):
+    def post(self):
+        text=self.request.get("text")
+        msg = Message(text = text)
+
 
 
 #initialization
