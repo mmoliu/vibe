@@ -74,6 +74,10 @@ class ResultPage(webapp2.RequestHandler):
         result_template = jinja_env.get_template("/html/results.html")
         self.response.write(result_template.render(data_dict))
 
+class DiscussionPage(webapp2.RequestHandler):
+    def post(self):
+        
+
 
 
 #initialization
@@ -81,7 +85,8 @@ app = webapp2.WSGIApplication(
     [
     ('/', HomePage),
     ('/result', ResultPage),
-    ('/vibe', Vibe)
+    ('/vibe', Vibe),
+    ('/discussion', DiscussionPage)
     ], debug = True
 
     #when you load up your application, and it ends w slash, this class should be handling all requests
