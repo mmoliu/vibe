@@ -76,7 +76,7 @@ class ResultPage(webapp2.RequestHandler):
 
 class DiscussionPage(webapp2.RequestHandler):
     def post(self):
-        
+
 
 
 

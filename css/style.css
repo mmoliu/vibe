@@ -22,15 +22,10 @@ body {
   justify-content: flex-end;
 }
 
-.vibe {
+body{
 background-image: url("http://getwallpapers.com/wallpaper/full/c/c/7/667533.jpg");
 background-repeat: no-repeat;
 background-size: cover;
-color: aqua;
-height: 1000px;
-object-fit: cover;
-min-width: 100%;
-min-height: 100%;
 }
 
 .center{
