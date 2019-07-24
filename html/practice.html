@@ -13,29 +13,16 @@
     <link rel="stylesheet" type="text/css" href="../css/bethany-style.css">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-  </head>
-  <body class="vibe">
-    {{redirect | safe}}
-    <h1 class = "center">Vibe's Personality Test!</h1>
-    <form method="post" action="/result"> <!-- /result takes you to the resultpage -->
-      <div class="information">
-      First Name: <input type="text" name="fname"/>  <!--python searches for name -->
-      Last Name: <input type="text" name="lname"/>
-      </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h1 class="center vibe-title">Welcome <br> to our <br> Personality Test!</h1>
+    </head>
+    <body class="vibe">
+      <h1 class = "center">Vibe's Personality Test!</h1>
       <form method="post" action="/result"> <!-- /result takes you to the resultpage -->
         <div class="information">
         First Name: <input type="text" name="fname"/>  <!--python searches for name -->
         Last Name: <input type="text" name="lname"/>
         </div>
         <br>
-        <h1 class="Tell us about yourself! vibe-sub-title"</h1>
+        <h1 >Tell us about yourself!</h1>
         <div class="options">
         Choose your favorite color!
         <select name="color">
@@ -87,11 +74,13 @@
 
         <input type ="submit" value="Go!"/>
       </form>
+
     </body>
   </html>
 
   <!--header-->
   <header class="main-header" id="header">
+    <div class="bg-image">
       <!--/ nav-->
       <nav class="nav navbar-default navbar-fixed-top top-nav-collapse">
     <div class="container">

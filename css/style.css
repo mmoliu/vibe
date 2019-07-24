@@ -22,13 +22,10 @@ body {
   justify-content: flex-end;
 }
 
-.vibe {
-padding-left: 100px;
-padding-right: 100px;
+body{
 background-image: url("http://getwallpapers.com/wallpaper/full/c/c/7/667533.jpg");
-background-size: 100%;
 background-repeat: no-repeat;
-color: aqua;
+background-size: cover;
 }
 
 .center{
@@ -96,4 +93,25 @@ html{
 .top-nav-collapse {
   background: black;
   padding: 25px 0;
+}
+
+.vibe-title {
+  font-size: 90px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 88px;
+  letter-spacing: 4px;
+  opacity: 1;
+  text-transform: uppercase;
+  padding: 25px 0px;
+}
+
+.vibe-sub-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 10px;
+  letter-spacing: 1px;
+  opacity: 1;
+  text-transform: uppercase;
 }
