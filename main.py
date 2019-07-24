@@ -3,7 +3,7 @@ import webapp2  #gives access to Google's deployment code
 import jinja2
 import os
 from google.appengine.api import users
-from models import Person
+from models import Person, Message
 import operator
 #libraries for api_version
 from google.appengine.api import urlfetch
@@ -160,9 +160,25 @@ class ResultPage(webapp2.RequestHandler):
 
 
 class DiscussionPage(webapp2.RequestHandler):
+    def get(self):
+        result_template = jinja_env.get_template("/html/messaging.html")
+        self.response.write(result_template.render())
     def post(self):
         text=self.request.get("text")
         msg = Message(text = text)
+        msg.put()
+        message_query = Message.query().fetch()  #this is a list
+        print(message_query)
+        message = []
+        for i in message_query:
+            message.append(i.text)
+        print(message)
+        text_dict = {
+            "messages": message
+        }
+        result_template = jinja_env.get_template("/html/messaging.html")
+        self.response.write(result_template.render(text_dict))
+
 
 
 class Register(webapp2.RequestHandler):
@@ -210,7 +226,8 @@ app = webapp2.WSGIApplication(
     ('/', HomePage),
     ('/result', ResultPage),
     ('/vibe', Vibe),
-    ('/register', Register)
+    ('/register', Register),
+    ('/messaging', DiscussionPage)
     ], debug = True
 
     #when you load up your application, and it ends w slash, this class should be handling all requests
