@@ -30,12 +30,17 @@
             </div>
             <div class="collapse navbar-collapse navbar-right" id="mynavbar">
               <ul class="nav navbar-nav">
-
-
+                
                 <li><a href="/discussion">Discussion</a></li>
+                <li class="active"><a href="/">Home</a></li>
+                <li>
+                  {%if not existing_user%}
+                  <a href="/register"> Sign In </a>
+                  {%else%}
+                  <a href="">Account</a> <!-- make sure to add profile link later -->
+                  {%endif%}
 
-
-                <li class="active"><a href="#header">Home</a></li>
+                </li>
                 <li><a href="/vibe">Vibe</a></li>
                 <li><a href="/results">Form</a></li>
                 <li><a href="#contact">Results</a></li>
