@@ -4,10 +4,15 @@ import jinja2
 import os
 from google.appengine.api import users
 from models import Person, Message
+from google.appengine.ext import ndb
 import operator
+import google.appengine.ext.db 
 #libraries for api_version
 from google.appengine.api import urlfetch
 import json
+
+MESSAGE_PARENT = ndb.Key("Entity", "strong_consistency")
+
 
 
 
@@ -105,7 +110,7 @@ class Vibe(webapp2.RequestHandler):
 
 
 class ResultPage(webapp2.RequestHandler):
-
+    #an initialization of the creator's personalities #COME BACK TO THIS
     def post(self):
         firstName = self.request.get("fname")
         lastName = self.request.get("lname")
@@ -160,22 +165,35 @@ class ResultPage(webapp2.RequestHandler):
 
 
 class DiscussionPage(webapp2.RequestHandler):
+    global MESSAGE_PARENT
     def get(self):
         result_template = jinja_env.get_template("/html/messaging.html")
         self.response.write(result_template.render())
     def post(self):
-        text=self.request.get("text")
-        msg = Message(text = text)
+        user = users.get_current_user() # will return a user if someone is signed in, if not, none
+        if user:
+            email_address = user.nickname()
+            name = Person.query().filter(Person.email == email_address).get()
+            name = name.first_name
+        content=self.request.get("text")
+        msg = Message(parent=MESSAGE_PARENT, text = content)
         msg.put()
-        message_query = Message.query().fetch()  #this is a list
+        #message_query = Message.query(kind=).fetch() #this is a list
+        message_query = Message.query(ancestor=MESSAGE_PARENT).order(-Message.created).fetch() #Message.fetch()
         print(message_query)
+        #need to get the key of a specific one, or make it ordered?
         message = []
         for i in message_query:
             message.append(i.text)
         print(message)
         text_dict = {
-            "messages": message
+            "messages": message,
+            "name": name
         }
+
+
+        # query = client.query(kind='Task')
+        # query.order = ['-created']
         result_template = jinja_env.get_template("/html/messaging.html")
         self.response.write(result_template.render(text_dict))
 
