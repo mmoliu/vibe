@@ -47,8 +47,8 @@ font-size: 35px;
 
 .information{
   text-align:center;
-  color:greenyellow;
-  font-size: 15px
+  color: greenyellow;
+  font-size: 20px
 }
 
 html{
@@ -57,7 +57,7 @@ html{
 
 .options{
   color:greenyellow;
-  font-size: 15px
+  font-size: 20px
 
 }
 
@@ -114,19 +114,21 @@ html{
   padding: 25px 0;
 }
 
-.vibe-title {
-  font-size: 100px;
+/* .vibe-title { */
+.title{
+  font-size: 150px;
   font-weight: 700;
   color: #fff;
-  line-height: 142px;
+  line-height: 120px;
   letter-spacing: 4px;
   opacity: 1;
   text-transform: uppercase;
-  padding: 25px 0px;
+  padding: 50px 0px;
 }
 
-.vibe-sub-title {
-  font-size: 40px;
+/* .vibe-sub-title { */
+.sub-title{
+  font-size: 30px;
   font-weight: 700;
   color: white;
   line-height: 10px;
@@ -137,4 +139,29 @@ html{
 
 .text-black {
   color: black;
+}
+
+.btn-submit2{
+size: 20px;
+background-color: gold;
+border: none;
+color: black;
+padding: 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+}
+.btn-submit{
+  size: 40px;
+  background-color: gold;
+  border: none;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
 }
