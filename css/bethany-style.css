@@ -43,11 +43,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: transparent;
 }
 
-.main-header {
-  background: url(../img/banner.jpeg) no-repeat;
-  background-size: cover;
-  min-height: 610px;
-}
+
 
 .bg-color {
   background-color: RGBA(0, 0, 0, 0.41);

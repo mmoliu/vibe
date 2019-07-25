@@ -7,16 +7,26 @@
   <body>
     <h1>Discussion Page</h1>
 
-    <h1>Name:</h1>xs
-    <ul id="messages"></ul>
-    <div/>
-    <div id="messages">
-    {%for msg in messages%}
-    {{msg}}
+    <h2>Name:</h2>
+
+  <ul id="messages"></ul>
+  <div/>
+  <div id="messages">
+    {%for i in messages%}
+    <div>
+      <br>
+      <br>
+    {{name}}: {{i}}
+    <br>
+    <br>
     <br>
     {%endfor%}
-    </div>
-    <form method="post" action="/messaging">
+  </div>
+    <br>
+    <br>
+  </div>
+  <form method="post" action="/messaging">
+
     <input type="text" name="text"/>
     </form>
 
