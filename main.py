@@ -92,6 +92,11 @@ class ResultPage(webapp2.RequestHandler):
         result_template = jinja_env.get_template("/html/results.html")
         self.response.write(result_template.render(data_dict))
 
+class Video(webapp2.RequestHandler):
+    def get(self):
+        video_template = jinja_env.get_template("/html/video.html")
+        self.response.write(video_template.render())
+
 
 
 #initialization
@@ -99,7 +104,8 @@ app = webapp2.WSGIApplication(
     [
     ('/', HomePage),
     ('/result', ResultPage),
-    ('/vibe', Vibe)
+    ('/vibe', Vibe),
+    ('/video', Video)
     ], debug = True
 
     #when you load up your application, and it ends w slash, this class should be handling all requests
