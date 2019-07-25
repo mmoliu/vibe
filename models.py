@@ -1,5 +1,6 @@
 #where models will go
 from google.appengine.ext import ndb
+#import google.appengine.ext.db
 
 class Person(ndb.Model):
     email = ndb.StringProperty(required=True)
@@ -10,5 +11,7 @@ class Person(ndb.Model):
     activity = ndb.StringProperty(required=True)
     music = ndb.StringProperty(required=True)
 
+
 class Message(ndb.Model):
     text = ndb.StringProperty(required=True)
+    created = ndb.DateTimeProperty(auto_now_add=True)
