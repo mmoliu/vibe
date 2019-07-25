@@ -17,21 +17,16 @@
     <form method="post" action="/result"> <!-- /result takes you to the resultpage -->
       </div>
       <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h1 class="center vibe-title">Welcome to our <br> Personality Test!</h1>
+      <h1 class="vibe-page-title">Welcome <br> to our <br> Personality Test!</h1>
       <form method="post" action="/result"> <!-- /result takes you to the resultpage -->
         <div class="information">
         First Name: <input class="text-black" type="text" name="fname"/>
-        <br>
-        <br>  <!--python searches for name -->
+        <!--python searches for name -->
         Last Name: <input class="text-black" type="text" name="lname"/>
         </div>
         <br>
-        <h1 class="vibe-sub-title">Tell us about yourself! </h1>
+        <br>
+        <h1 class="vibe-page-tell-us-now"><u>Tell us about yourself!</u></h1>
         <br>
         <div class="options">
         Choose your favorite color!
@@ -49,11 +44,6 @@
         </select>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         Which True Color personality are you?
         <select class="text-black" name="TrueColor">
             <option value="pink">Select</option>
@@ -62,13 +52,6 @@
             <option value="Green">green</option>
             <option value="Orange">orange</option>
         </select>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         <br>
         <br>
         Choose your favorite activity out of this list!
@@ -85,13 +68,6 @@
         </select>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         Choose your favorite music genre!
         <select class="text-black" name="music">
             <option value="pink">Select</option>
@@ -105,7 +81,7 @@
           </div>
           <br>
 
-        <input type ="submit" value="Go!"/>
+        <input class="button_submit_now"type ="submit" value="Submit Now!"/>
       </form>
     </body>
   </html>
@@ -120,17 +96,13 @@
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
                         <span class="fa fa-bars"></span>
                     </button>
-          <a href="index.html" class="navbar-brand">Vibe</a>
+          <a href="index.html" class="navbar-brand">You are logged in</a>
         </div>
         <div class="collapse navbar-collapse navbar-right" id="mynavbar">
           <ul class="nav navbar-nav">
-
-
-            <li><a href="/discussion">Discussion</a></li>
-
-
-            <li class="active"><a href="#header">Home</a></li>
             <li><a href="/vibe">Vibe</a></li>
+            <li class="active"><a href="#header">Home</a></li>
+            <li><a href="/discussion">Discussion</a></li>
             <!-- <li><a href="/results">Form</a></li>
             <li><a href="#contact">Results</a></li> -->
 
