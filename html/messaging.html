@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Text Webpage</title>
-
+    <title>Discusion Vibe Page</title>
+    <link rel="stylesheet" type="text/css" href="../css/messaging.css"/>
   </head>
   <body>
+    <h1>Discussion Page</h1>
+
+    <h2>Name:</h2>
 
   <ul id="messages"></ul>
   <div/>
   <div id="messages">
     {%for i in messages%}
     <div>
+      <br>
+      <br>
     {{name}}: {{i}}
+    <br>
+    <br>
     <br>
     {%endfor%}
   </div>
     <br>
+    <br>
   </div>
   <form method="post" action="/messaging">
-    <input type="text" name="text"/>
-  </form>
 
-  <script src="../js/messaging.js"></script>
+    <input type="text" name="text"/>
+    </form>
+
+    <script src="../js/messaging.js"></script>
   </body>
 </html>

@@ -272,7 +272,7 @@ class Register(webapp2.RequestHandler):
 
 class Profile(webapp2.RequestHandler):
     def get(self):
-        #goal - when you click
+        #goal - when you click profile, it populates it with the profile of the person you clicked on/ yourself???
         profile_template = {
 
         }
