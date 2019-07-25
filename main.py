@@ -6,7 +6,7 @@ from google.appengine.api import users
 from models import Person, Message
 from google.appengine.ext import ndb
 import operator
-import google.appengine.ext.db 
+import google.appengine.ext.db
 #libraries for api_version
 from google.appengine.api import urlfetch
 import json
@@ -111,6 +111,19 @@ class Vibe(webapp2.RequestHandler):
 
 class ResultPage(webapp2.RequestHandler):
     #an initialization of the creator's personalities #COME BACK TO THIS
+    michelle = Person(email = "moch@yahoo.com", first_name="Michelle", last_name="Liu", color="pink", trueColor="blue", activity="video games", music="kpop")
+    devin = Person(email = "devin@yahoo.com", first_name="Devin", last_name="Martin", color="blue", trueColor="blue", activity="sports", music="pop")
+    mohammed = Person(email = "moha@yahoo.com", first_name="Mohammed", last_name="Ghandour", color="green", trueColor="green", activity="listening to music", music="pop")
+    ryan = Person(email = "ryanjwalsh@yahoo.com", first_name="Ryan", last_name="Walsh", color="orange", trueColor="blue", activity="sports", music="pop")
+    claire = Person(email = "claire@yahoo.com", first_name="Claire", last_name="Yang", color="blue", trueColor="green", activity="watching movies", music="pop")
+    daniel = Person(email = "daniel@yahoo.com", first_name="Daniel", last_name="Daniel", color="orange", trueColor="orange", activity="sporrs", music="pop")
+    michelle.put()
+    devin.put()
+    mohammed.put()
+    ryan.put()
+    claire.put()
+    daniel.put()
+
     def post(self):
         firstName = self.request.get("fname")
         lastName = self.request.get("lname")
@@ -172,9 +185,14 @@ class Video(webapp2.RequestHandler):
 class DiscussionPage(webapp2.RequestHandler):
     global MESSAGE_PARENT
     def get(self):
+        message_query = Message.query(ancestor=MESSAGE_PARENT).order(Message.created).fetch()
+        list_of_keys = ndb.put_multi(message_query)
+        list_of_entities = ndb.get_multi(list_of_keys)
+        ndb.delete_multi(list_of_keys)
         result_template = jinja_env.get_template("/html/messaging.html")
         self.response.write(result_template.render())
     def post(self):
+        name = "Guest"
         user = users.get_current_user() # will return a user if someone is signed in, if not, none
         if user:
             email_address = user.nickname()
@@ -184,8 +202,7 @@ class DiscussionPage(webapp2.RequestHandler):
         msg = Message(parent=MESSAGE_PARENT, text = content)
         msg.put()
         #message_query = Message.query(kind=).fetch() #this is a list
-        message_query = Message.query(ancestor=MESSAGE_PARENT).order(-Message.created).fetch() #Message.fetch()
-        print(message_query)
+        message_query = Message.query(ancestor=MESSAGE_PARENT).order(Message.created).fetch() #Message.fetch()
         #need to get the key of a specific one, or make it ordered?
         message = []
         for i in message_query:
@@ -195,7 +212,7 @@ class DiscussionPage(webapp2.RequestHandler):
             "messages": message,
             "name": name
         }
-
+#doesn't perfectly work yet
 
         # query = client.query(kind='Task')
         # query.order = ['-created']
@@ -205,15 +222,21 @@ class DiscussionPage(webapp2.RequestHandler):
 
 
 class Register(webapp2.RequestHandler):
+
     def get(self):
+        user = None
+        existing_user = None
+        login_url = None
+        logout_url = None
         user = users.get_current_user() # will return a user if someone is signed in, if not, none
+        existing_user = None
         if user:
             email_address = user.nickname()
             existing_user = Person.query().filter(Person.email == email_address).get() #query if we already have that email #get pulls only one
             if not existing_user:
                 email_address = user.nickname()
                 current_user = Person(
-                    first_name="something",
+                    first_name="Anonymous",
                     email = email_address,
                     last_name="None",
                     color="None",
@@ -223,25 +246,39 @@ class Register(webapp2.RequestHandler):
 
                 )
                 current_user.put()
-                self.response.write("Thank you for registering!")
+                #self.response.write("Thank you for registering!")
 
-            self.response.write("You are logged in! ")
+            #self.response.write("You are logged in! ")
             logout_url = users.create_logout_url('/register')
-            logout_button = "<a href='%s'> Log out </a>" % logout_url
-            self.response.write("Log out here: <br>"+ logout_button)
+            #logout_button = "<a href='%s'> Log out </a>" % users.create_logout_url('/register')
+            #self.response.write("Log out here: <br>"+ logout_button)
             #self.response.write("You are logged in " + email_address +"!")
         else:
-            self.response.write("You are a new user, please provide info! ")
+            #self.response.write("You are a new user, please provide info! ")
             login_url = users.create_login_url('/register')
-            login_button = "<a href='%s'> Sign In </a>" % login_url
-            self.response.write("Please log in! <br>" + login_button)
+            #login_button = "<a href='%s'> Sign In </a>" % users.create_login_url('/register')
+            #self.response.write("Please log in! <br>" + login_button)
 
         reg_dict ={
+        "user": user,
+        "existing_user": existing_user,
+        #"logout_url": logout_url,
+        "logout_url": logout_url,
+        "login_url": login_url
         }
         register_template = jinja_env.get_template("/html/register.html")
         self.response.write(register_template.render(reg_dict))
 
 
+class Profile(webapp2.RequestHandler):
+    def get(self):
+        #goal - when you click profile, it populates it with the profile of the person you clicked on/ yourself???
+        profile_template = {
+
+        }
+
+        profile_template = jinja_env.get_template("/html/profile.html")
+        self.response.write(register_template.render(profile_template))
 
 #initialization
 app = webapp2.WSGIApplication(
@@ -252,6 +289,7 @@ app = webapp2.WSGIApplication(
     ('/video', Video),
     ('/register', Register),
     ('/messaging', DiscussionPage)
+    ('/profile', Profile)
     ], debug = True
 
     #when you load up your application, and it ends w slash, this class should be handling all requests

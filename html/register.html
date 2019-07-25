@@ -4,11 +4,18 @@
     <link rel="stylesheet" type="text/css" href="../css/register.css"/>
     <title>Register Page</title>
   </head>
-  <body>
-    <h1>Register Pages</h1>
+<body>
+    {%if user%}
+    {%if not existing_user %}
+        Thank you for registering!
+    {%endif%}
+    You are now logged in!
+    Log out here: <a href="{{logout_url}}"> Logout! </a>
+    {%else%}
+    You are a new user, please provide info!
+    Log in here: <a href="{{login_url}}"> Login! </a>
+    {%endif%}
     <br>
-    <!-- {{logout_button}}
-     -->
      <a href="/"> Back to home page! </a>
   </body>
 </html>
