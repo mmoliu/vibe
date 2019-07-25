@@ -5,14 +5,17 @@
     <title>Register</title>
   </head>
   <body>
-    <!-- <form method="post" action="/">
-      First Name =  <input type="text" name="first_name">
-      Last Name = <input type="text"name ="last_name">
-        <input type= "submit">
-    </form> -->
+    {%if user%}
+    {%if not existing_user %}
+        Thank you for registering!
+    {%endif%}
+    You are now logged in!
+    Log out here: <a href="{{logout_url}}"> Logout! </a>
+    {%else%}
+    You are a new user, please provide info!
+    Log in here: <a href="{{login_url}}"> Login! </a>
+    {%endif%}
     <br>
-    <!-- {{logout_button}}
-     -->
      <a href="/"> Back to home page! </a>
   </body>
 </html>
