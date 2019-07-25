@@ -231,7 +231,7 @@ app = webapp2.WSGIApplication(
     ('/', HomePage),
     ('/result', ResultPage),
     ('/vibe', Vibe),
-    ('/video', Video)
+    ('/video', Video),
     ('/register', Register),
     ('/messaging', DiscussionPage)
     ], debug = True
