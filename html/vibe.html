@@ -14,11 +14,7 @@
   </head>
   <body class="vibe">
     {{redirect | safe}}
-    <h1 class = "center">Vibe's Personality Test!</h1>
     <form method="post" action="/result"> <!-- /result takes you to the resultpage -->
-      <div class="information">
-      First Name: <input type="text" name="fname"/>  <!--python searches for name -->
-      Last Name: <input type="text" name="lname"/>
       </div>
       <br>
       <br>
@@ -58,8 +54,6 @@
         <br>
         <br>
         <br>
-        <br>
-        <br>
         Which True Color personality are you?
         <select class="text-black" name="TrueColor">
             <option value="pink">Select</option>
@@ -68,8 +62,6 @@
             <option value="Green">green</option>
             <option value="Orange">orange</option>
         </select>
-        <br>
-        <br>
         <br>
         <br>
         <br>
@@ -91,8 +83,6 @@
             <option value="a7">debate</option>
             <option value="a8">watch movies</option>
         </select>
-        <br>
-        <br>
         <br>
         <br>
         <br>
@@ -141,8 +131,8 @@
 
             <li class="active"><a href="#header">Home</a></li>
             <li><a href="/vibe">Vibe</a></li>
-            <li><a href="/results">Form</a></li>
-            <li><a href="#contact">Results</a></li>
+            <!-- <li><a href="/results">Form</a></li>
+            <li><a href="#contact">Results</a></li> -->
 
           </ul>
         </div>
