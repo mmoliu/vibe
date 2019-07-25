@@ -1,23 +1,37 @@
 h1{
   text-align: center;
+  font-size: 50px;
+
 }
 
 .results{
   font-style: helvetica;
-  color: orangered;
+  color: white;
   padding-left: 100px;
   padding-right: 100px;
-  background-image:url("http://www.wccowboychurch.org/hp_wordpress/wp-content/uploads/2018/09/landscape-wallpaper-12.jpg");
-  background-size: 100%;
+  background-image:url("https://ak9.picdn.net/shutterstock/videos/112219/thumb/1.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
-form{
-  color:gold;
-  height: 10px;
-}
-
-.black{
-  background-color: black;
+div{
+  background-color:inherit;
   width:fit-content;
 }
+
+.navbar {
+  background: #FFAB00;
+}
+.nav-link,
+.navbar-brand {
+  color: #FFAB00;
+  cursor: pointer;
+}
+.nav-link {
+  margin-right: 1em !important;
+}
+.nav-link:hover {
+  color: #FFAB00;
+}
+.navbar-collapse {
+  justify-content: flex-end;

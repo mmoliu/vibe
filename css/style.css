@@ -22,7 +22,7 @@ body {
   justify-content: flex-end;
 }
 
-.vibe {
+body{
 background-image: url("http://getwallpapers.com/wallpaper/full/c/c/7/667533.jpg");
 background-repeat: no-repeat;
 background-size: cover;
@@ -37,13 +37,19 @@ font-size: 35px;
 
 .information{
   text-align:center;
+  color:greenyellow;
+  font-size: 15px
 }
 
 html{
   font-family: helvetica;
 }
 
+.options{
+  color:greenyellow;
+  font-size: 15px
 
+}
 
 
 }
