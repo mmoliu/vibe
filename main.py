@@ -231,12 +231,9 @@ app = webapp2.WSGIApplication(
     ('/', HomePage),
     ('/result', ResultPage),
     ('/vibe', Vibe),
-<<<<<<< HEAD
     ('/video', Video)
-=======
     ('/register', Register),
     ('/messaging', DiscussionPage)
->>>>>>> fe4b4209346a7be3593a294a0769e0ed45b690d7
     ], debug = True
 
     #when you load up your application, and it ends w slash, this class should be handling all requests
