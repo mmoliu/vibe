@@ -30,21 +30,11 @@
             </div>
             <div class="collapse navbar-collapse navbar-right" id="mynavbar">
               <ul class="nav navbar-nav">
-
-                <li><a href="/messaging">Discussion</a></li>
-                <li class="active"><a href="/">Home</a></li>
-                <li>
-                  {%if not existing_user%}
-                  <a href="/register"> Sign In </a>
-                  {%else%}
-                  <a href="">Account</a> <!-- make sure to add profile link later -->
-                  {%endif%}
-
-                </li>
+                <li class="active"><a href="#header">Home</a></li>
                 <li><a href="/vibe">Vibe</a></li>
                 <li><a href="/results">Form</a></li>
                 <li><a href="#contact">Results</a></li>
-
+                <li><a href="/discussion">Discussion</a></li>
               </ul>
             </div>
           </div>
@@ -54,6 +44,9 @@
             <div class="wrapper wow fadeInUp delay-05s animated" style="visibility: visible; animation-name: fadeInUp;">
               <h3 class="title">Vibe</h3>
               <h6 class="sub-title">RELAXING, CHILLING, AND MOST IMPORTANTLY... VIBING</h6>
+              <br>
+              <br>
+              <br>
               <div>
           <form action="/vibe"><button type="submit" class="btn btn-submit">Take our Personality Test now!</button>
           </form>
