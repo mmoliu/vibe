@@ -9,10 +9,13 @@
   <ul id="messages"></ul>
   <div/>
   <div id="messages">
-    {%for msg in messages%}
-    {{msg}}
+    {%for i in messages%}
+    <div>
+    {{name}}: {{i}}
     <br>
     {%endfor%}
+  </div>
+    <br>
   </div>
   <form method="post" action="/messaging">
     <input type="text" name="text"/>
