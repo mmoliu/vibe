@@ -1,7 +1,17 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: white;
+  /* background-color: white; */
+  background-image: url("http://files.all-free-download.com//downloadfiles/wallpapers/1440_900/blue_sunset_10552.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#cta-1{
+  background-color: sandybrown;
+}
+.cta-infotext-center{
+  text-align: center;
 }
 /*--- navigation bar ---*/
 .navbar {
@@ -22,7 +32,7 @@ body {
   justify-content: flex-end;
 }
 
-body{
+.vibe{
 background-image: url("http://getwallpapers.com/wallpaper/full/c/c/7/667533.jpg");
 background-repeat: no-repeat;
 background-size: cover;
