@@ -17,7 +17,7 @@
     <body>
       <!--header-->
       <header class="main-header" id="header">
-        <div class="bg-color">
+        <div class="bg-img-results" id="show_bg_2">
           <!--/ nav-->
           <nav class="nav navbar-default navbar-fixed-top top-nav-collapse">
         <div class="container">
@@ -44,11 +44,24 @@
           <div class="container text-center">
             <div class="wrapper wow fadeInUp delay-05s animated" style="visibility: visible; animation-name: fadeInUp;">
               <h3 class="title">Results:</h3>
-              <h6 class="sub-title">Your Top 3 Vibes are... </h6>
-              <br>
-              <br>
-              <br>
+              <h6 class="sub-title"><u>Your Top VIBE IS... </u></h6>
+              <div class="results">
+                <h2>You VIBE with  <a href="/profile?key={{top_one}}"> {{top_one}} {{x1}}%</a> </h2>
+                <h2><u>YOUR TOP 3 VIBES ARE: </u></h2>
+              <div class="allResults">
+                <h2>You've VIBED the most with:</h2>
+                <ul>
+                  <li>Top 1: <a href="/profile?key={{second}}"> {{second}} {{x2}}% </a> </li>
+                  <li>Top 2:  <a href="/profile?key={{third}}"> {{third}} {{x3}}% </a></li>
+                  <li>Top 3:  <a href="/profile?key={{fourth}}"> {{fourth}} {{x4}}%</a></li>
+                </ul>
+              </div>
               <div>
+              <h2>You've VIBED the least with:</h2>
+              <li>Bottom 1:  <a href="/profile?key={{bottom}}"> {{bottom}} {{x5}}%</a></li>
+              <li>Bottom 2:  <a href="/profile?key={{secondBot}}"> {{secondBot}} {{x6}}%</a></li>
+              <li>Bottom 3:  <a href="/profile?key={{thirdBot}}"> {{thirdBot}} {{x7}}%</a></li>
+              </div>
           </form>
         </div>
             </div>
@@ -61,7 +74,10 @@
         <div class="container">
           <div class="row">
             <div class="cta-infotext-center">
-              <h3><span class="dec-tec">“</span>The greatest gift of life is friendship.<span class="dec-tec">”</span> -Hubert H. Humphrey</h3>
+              <form action="/vibe"><button type="submit" class="btn-submit2">Take the Personality Test Again!</button>
+              <form action="/vibe"><button type="submit" class="btn-submit2">Message the people you VIBED with!</button>
+
+              </form>
             </div>
           </div>
         </div>
@@ -73,9 +89,9 @@
           <div class="row">
             <div class="col-md-3 wow fadeInLeft delay-05s animated" style="visibility: visible; animation-name: fadeInLeft;">
               <div class="section-title">
-                <h2 class="head-title">Features</h2>
+                <h2 class="head-title">Congratulations! You have just VIBED.</h2>
                 <hr class="botm-line">
-                <p class="sec-para">We are here to help you VIBE with as many people as possible!</p>
+                <p class="sec-para">There are now a list of things you can do with your new friends to build a relationship.</p>
               </div>
             </div>
             <div class="col-md-9">
@@ -212,8 +228,8 @@
           <div class="row white">
             <div class="col-md-8 col-sm-12">
               <div class="section-title">
-                <h2 class="head-title black">Contact Us</h2>
-                <p class="sec-para black">We are here to help you VIBE with as many people as possible! If you have any questions about the website, don't hesitate to ask us at any of these platforms!</p>
+                <h2 class="head-title black"><u>Didn't like your results?</u></h2>
+                <p class="sec-para black">Email Us! Let us know why you think you didn't VIBE well with your results. <br></p>
                 <div class="location-info">
                   <p class="white"><span aria-hidden="true" class="fa fa-map-marker"></span>Google Detroit</p>
                   <p class="white"><span aria-hidden="true" class="fa fa-phone"></span>Phone: (***)-(***-****)</p>
