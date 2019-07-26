@@ -37,7 +37,7 @@ background-image: url("http://getwallpapers.com/wallpaper/full/c/c/7/667533.jpg"
 background-repeat: no-repeat;
 background-size: cover;
 color: white;
-font-size: 35px;
+font-size: 70px;
 }
 
 .center{
@@ -46,9 +46,9 @@ font-size: 35px;
 }
 
 .information{
-  text-align:center;
-  color: greenyellow;
-  font-size: 20px
+  text-align: center;
+  color: white;
+  font-size: 75px;
 }
 
 html{
@@ -56,9 +56,10 @@ html{
 }
 
 .options{
-  color:greenyellow;
-  font-size: 20px
-
+  color: white;
+  font-size: 70px;
+  position: relative;
+  left: 200;
 }
 
 
@@ -101,7 +102,7 @@ html{
 }
 
 .bg-color{
-  background-image: url("https://pcbeachspringbreak.com/wp-content/uploads/2015/09/Friends-Having-Fun.png");
+  background-image: url("https://media3.giphy.com/media/12qHWnTUBzLWXS/200w.webp?cid=790b76115d3af9e94a512f64455c747c&rid=200w.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -154,7 +155,7 @@ font-size: 16px;
 margin: 4px 2px;
 }
 .btn-submit{
-  size: 40px;
+  size: 400px;
   background-color: gold;
   border: none;
   color: black;
@@ -164,4 +165,35 @@ margin: 4px 2px;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
+}
+
+.vibe-page-title{
+  font-size: 150px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  line-height: 150px;
+  position: relative;
+  right: 100px;
+}
+}
+
+.vibe-page-tell-us-now{
+  position: relative;
+  left: 100px;
+}
+
+.button_submit_now{
+  background-color: white; /* Green */
+  border: none;
+  color: black;
+  padding: 50px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 100px;
+  position: relative;
+  left: 3000px;
+
 }
