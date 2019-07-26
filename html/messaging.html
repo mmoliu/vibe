@@ -6,7 +6,6 @@
   </head>
   <body>
     <h1>Discussion Page</h1>
-    <h2>Name:</h2>
 
 <!-- <div class="container darker">
 
@@ -23,12 +22,10 @@
 </div> -->
   {%for i in messages%}
 <div class="container">
-  <div id="messages">
   <ul></ul>
       <br>
-    {{name}}: {{i}}
+    <a href="/profile?key={{fname}}%20{{lname}} "> {{fname}} </a> : {{i}}
     <br>
-  </div>
   </div>
     {%endfor%}
     <br>

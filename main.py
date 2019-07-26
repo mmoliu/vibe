@@ -125,12 +125,12 @@ class Vibe(webapp2.RequestHandler):
 
 class ResultPage(webapp2.RequestHandler):
     #an initialization of the creator's personalities #COME BACK TO THIS
-    michelle = Person(email = "moch@yahoo.com", first_name="Michelle", last_name="Liu", color="pink", trueColor="blue", activity="video games", music="kpop", values="Happiness")
-    devin = Person(email = "devin@yahoo.com", first_name="Devin", last_name="Martin", color="blue", trueColor="blue", activity="sports", music="pop", values="Love")
-    mohammed = Person(email = "moha@yahoo.com", first_name="Mohammed", last_name="Ghandour", color="green", trueColor="green", activity="listening to music", music="pop", values="Money")
-    ryan = Person(email = "ryanjwalsh@yahoo.com", first_name="Ryan", last_name="Walsh", color="orange", trueColor="blue", activity="sports", music="pop", values="Love")
-    claire = Person(email = "claire@yahoo.com", first_name="Claire", last_name="Yang", color="blue", trueColor="green", activity="watching movies", music="pop", values="Happiness")
-    daniel = Person(email = "daniel@yahoo.com", first_name="Daniel", last_name="Daniel", color="orange", trueColor="orange", activity="sporrs", music="pop", values="Happiness")
+    michelle = Person(email = "moch@yahoo.com", first_name="Michelle", last_name="Liu", color="pink", trueColor="blue", activity="video games", music="kpop", values="Happiness", career="Student")
+    devin = Person(email = "devin@yahoo.com", first_name="Devin", last_name="Martin", color="blue", trueColor="blue", activity="sports", music="pop", values="Love", career="Student")
+    mohammed = Person(email = "moha@yahoo.com", first_name="Mohammed", last_name="Ghandour", color="green", trueColor="green", activity="listening to music", music="pop", values="Money", career="Student")
+    ryan = Person(email = "ryanjwalsh@yahoo.com", first_name="Ryan", last_name="Walsh", color="orange", trueColor="blue", activity="sports", music="pop", values="Love", career="Programmer")
+    claire = Person(email = "claire@yahoo.com", first_name="Claire", last_name="Yang", color="blue", trueColor="green", activity="watching movies", music="pop", values="Happiness", career="Student")
+    daniel = Person(email = "daniel@yahoo.com", first_name="Daniel", last_name="Daniel", color="orange", trueColor="orange", activity="sporrs", music="pop", values="Happiness", career="Programmer")
     michelle.put()
     devin.put()
     mohammed.put()
@@ -146,6 +146,7 @@ class ResultPage(webapp2.RequestHandler):
         favActivity = self.request.get("activity")
         music = self.request.get("music")
         values = self.request.get("values")
+        career = self.request.get("career")
         user = users.get_current_user()
         email_address = user.nickname()
         if user:
@@ -158,6 +159,7 @@ class ResultPage(webapp2.RequestHandler):
             current_user.activity= favActivity
             current_user.music=music
             current_user.values = values
+            current_user.career = career
             vibesList= getVibes(current_user) #list of tuples in order that have ppl's name, and similarity index
             print(vibesList)
             current_user.put()
@@ -171,28 +173,28 @@ class ResultPage(webapp2.RequestHandler):
             #"lenVibes": len(vibesList[0][1]),
             #"fNametop_one": firstNameOnly(vibesList[1][0]),
             "vibesList": vibesList,
-            "x1": str(round(((float((vibesList[1][1])*100))/6),2)),
+            "x1": str(round(((float((vibesList[1][1])*100))/7),2)),
             "second":  vibesList[2][0],
             #"fsecond": firstNameOnly(vibesList[2][0]),
-            "x2": str(round(((float((vibesList[1][1])*100))/6),2)),
+            "x2": str(round(((float((vibesList[1][1])*100))/7),2)),
             "third":  vibesList[3][0],
             #"fthird": firstNameOnly(vibesList[3][0]),
-            "x3": str(round(((float((vibesList[1][1])*100))/6),2)),
+            "x3": str(round(((float((vibesList[1][1])*100))/7),2)),
             "fourth":  vibesList[4][0],
             #"ffourth": firstNameOnly(vibesList[4][0]),
-            "x4": str(round(((float((vibesList[1][1])*100))/6),2)),
+            "x4": str(round(((float((vibesList[1][1])*100))/7),2)),
             "bottom": vibesList[len(vibesList)-1][0],
             #"fbottom": firstNameOnly(vibesList[len(vibesList)-1][0]),
-            "x5": str(round(((float((vibesList[len(vibesList)-1][1])*100))/6),2)),
+            "x5": str(round(((float((vibesList[len(vibesList)-1][1])*100))/7),2)),
             "secondBot":vibesList[len(vibesList)-2][0],
             #"fsecondBot": firstNameOnly(vibesList[len(vibesList)-2][0]),
-            "x6": str(round(((float((vibesList[len(vibesList)-2][1])*100))/6),2)),
+            "x6": str(round(((float((vibesList[len(vibesList)-2][1])*100))/7),2)),
             "thirdBot":vibesList[len(vibesList)-3][0],
             #"fthirdBot": firstNameOnly(vibesList[len(vibesList)-3][0]),
-            "x7": str(round(((float((vibesList[len(vibesList)-3][1])*100))/6),2)),
+            "x7": str(round(((float((vibesList[len(vibesList)-3][1])*100))/7),2)),
             "fourthBot":vibesList[len(vibesList)-4][0],
             #"ffourthBot": firstNameOnly(vibesList[len(vibesList)-4][0]),
-            "x8": str(round(((float((vibesList[len(vibesList)-4][1])*100))/6),2))
+            "x8": str(round(((float((vibesList[len(vibesList)-4][1])*100))/7),2))
 
         }
 
@@ -306,7 +308,8 @@ class Profile(webapp2.RequestHandler):
             "trueColor":profilePerson.trueColor,
             "activity":profilePerson.activity,
             "music":profilePerson.music,
-            "values": profilePerson.values
+            "values": profilePerson.values,
+            "career": profilePerson.career,
 
         }
 

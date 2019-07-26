@@ -7,17 +7,59 @@
 <body>
   <h1 class = "Register">Register to VIBE here!</h1>
 
+  </head>
+
+  <body>
+
+  <div class="div1">
     {%if user%}
+    {%if not existing_user %}
+      Thank you for registering!
+  {%endif%}
+  <p>You are now logged in!</p>
+  <!-- <div class="div1"> -->
+
+  <a class ="obutton" href="{{logout_url}}"> Logout! </a>
+  {%else%}
+  <!-- </div> -->
+  <p>You are a new user, please provide info!</p>
+  <br>
+  <div class="div2">
+  <a class= "lbutton" href="{{login_url}}"> Login! </a>
+  <br>
+  <br>
+  </div>
+  <br>
+  <br>
+
+  {%endif%}
+  <!-- <div class="div3"> -->
+  <br>
+   <a class = "btm" href="/"> Back to home page! </a>
+  <!-- </div> -->
+  </div>
+    <!-- {%if user%}
     {%if not existing_user %}
         Thank you for registering!
     {%endif%}
-    You are now logged in!
-    Log out here: <a href="{{logout_url}}"> Logout! </a>
+    <p>You are now logged in!</p>
+    <div class="div1">
+
+    <a class ="obutton" href="{{logout_url}}"> Logout! </a>
     {%else%}
-    You are a new user, please provide info!
-    Log in here: <a href="{{login_url}}"> Login! </a>
-    {%endif%}
+    </div>
+    <p>You are a new user, please provide info!</p>
     <br>
-     <a href="/"> Back to home page! </a>
+    <div class="div2">
+    <a class= "lbutton" href="{{login_url}}"> Login! </a>
+    <br>
+    <br>
+    </div>
+
+    {%endif%}
+    <div class="div3">
+    <br>
+     <a class = "btm" href="/"> Back to home page! </a>
+    </div> -->
   </body>
 </html>
