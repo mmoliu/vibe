@@ -14,25 +14,22 @@
   </head>
   <body class="vibe">
     {{redirect | safe}}
-    <form method="post" action="/result"> <!-- /result takes you to the resultpage -->
+    <form method="post" action="/result" autocomplete="off"> <!-- /result takes you to the resultpage -->
       </div>
-      <br>
       <h1 class="vibe-page-title">Welcome <br> to our <br> Personality Test!</h1>
       <form method="post" action="/result"> <!-- /result takes you to the resultpage -->
         <div class="information">
         First Name: <input class="text-black" type="text" name="fname"/>
         <br>
+        <br>
         <!--python searches for name -->
         Last Name: <input class="text-black" type="text" name="lname"/>
         </div>
-        <br>
-        <br>
         <h1 class="vibe-page-tell-us-now"><u>Tell us about yourself!</u></h1>
-        <br>
         <div class="options">
         Choose your favorite color!
         <select class="text-black"name="color">
-            <option value="pink">Select</option>
+            <option value="None">Select</option>
             <option value="pink">pink</option>
             <option value="black">black</option>
             <option value="white">white</option>
@@ -71,7 +68,7 @@
         <br>
         Choose your favorite music genre!
         <select class="text-black" name="music">
-            <option value="pink">Select</option>
+            <<option value="None">Select</option>
             <option value="m1">kpop</option>
             <option value="m2">country</option>
             <option value="m3">rap</option>
@@ -83,6 +80,7 @@
         <br>
         What is most important in life?
         <select class="text-black" name="values">
+          <option value="None">Select</option>
           <option>Love</option>
           <option>Grades</option>
           <option>Money</option>
@@ -93,6 +91,7 @@
         <br>
         What do you do for a living?
         <select class="text-black" name="career">
+          <option value="None">Select</option>
           <option>Programmer</option>
           <option>Manager</option>
           <option>Student</option>
