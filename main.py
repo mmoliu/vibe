@@ -65,33 +65,33 @@ class HomePage(webapp2.RequestHandler):
     def get(self): #request of getting stuff from a website
 
         #part of the copied bit
-        user = users.get_current_user() # will return a user if someone is signed in, if not, none
-        if user:
-            email_address = user.nickname()
-            self.response.write("You are logged in!")
-            logout_url = users.create_logout_url('/')
-            logout_button = "<a href='%s> Log out </a>" % logout_url
-
-            existing_user = Person.query().filter(Person.email == email_address).get() #query if we already have that email #get pulls only one
-            if existing_user:
-                pass
-            #self.response.write("You are logged in " + email_address +"!")
-        else:
-            self.response.write("You are a new user, please provide info!")
-            login_url = users.create_login_url('/')
-            login_button = "<a href='%s'> Sign In </a>" % login_url
-            self.response.write("Please log in! <br>" + login_button)
-
-        def post(self):
-            user = users.get_current_user()
-            if user:
-                current_user = Person(
-                    first_name=self.request.get('first_name'),
-                    email = self.request.get("email_address"),
-
-                )
-                current_user.put()
-                self.response.write("Thank you for registering!")
+        # user = users.get_current_user() # will return a user if someone is signed in, if not, none
+        # if user:
+        #     email_address = user.nickname()
+        #     self.response.write("You are logged in!")
+        #     logout_url = users.create_logout_url('/')
+        #     logout_button = "<a href='%s> Log out </a>" % logout_url
+        #
+        #     existing_user = Person.query().filter(Person.email == email_address).get() #query if we already have that email #get pulls only one
+        #     if existing_user:
+        #         pass
+        #     #self.response.write("You are logged in " + email_address +"!")
+        # else:
+        #     self.response.write("You are a new user, please provide info!")
+        #     login_url = users.create_login_url('/')
+        #     login_button = "<a href='%s'> Sign In </a>" % login_url
+        #     self.response.write("Please log in! <br>" + login_button)
+        #
+        # def post(self):
+        #     user = users.get_current_user()
+        #     if user:
+        #         current_user = Person(
+        #             first_name=self.request.get('first_name'),
+        #             email = self.request.get("email_address"),
+        #
+        #         )
+        #         current_user.put()
+        #         self.response.write("Thank you for registering!")
         home_dict={
         }
         welcome_template = jinja_env.get_template("html/main.html")
@@ -222,7 +222,9 @@ class DiscussionPage(webapp2.RequestHandler):
         if user:
             email_address = user.nickname()
             name = Person.query().filter(Person.email == email_address).get()
-            name = name.first_name
+            fname = name.first_name
+            lname = name.last_name
+
         content=self.request.get("text")
         msg = Message(parent=MESSAGE_PARENT, text = content)
         msg.put()
@@ -235,7 +237,8 @@ class DiscussionPage(webapp2.RequestHandler):
         print(message)
         text_dict = {
             "messages": message,
-            "name": name
+            "fname": fname,
+            "lname": lname,
         }
 #doesn't perfectly work yet
 
