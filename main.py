@@ -41,6 +41,20 @@ def getVibes(user):
     sortedSimIndex = sorted(similarityIndex.items(), key=operator.itemgetter(1), reverse=True)
     return sortedSimIndex #returns a dictionary with the keys sorted by its value
 
+#strip sentence to only first name
+# def firstandlast(list):
+#     fname = []
+#     lname = []
+#     print(list[0].split(' '))
+#     for i in list[0]:
+#         if i == " ": #in reality, will not work for spaces in first name
+#             break
+#         else:
+#             fname.append(i)
+#     firstString = ''.join(fname)
+#     lastString = ""#str(list[0]).remove(fname)
+#     name = [firstString, lastString]
+#     return name
 
 
 #handler section
@@ -111,12 +125,12 @@ class Vibe(webapp2.RequestHandler):
 
 class ResultPage(webapp2.RequestHandler):
     #an initialization of the creator's personalities #COME BACK TO THIS
-    michelle = Person(email = "moch@yahoo.com", first_name="Michelle", last_name="Liu", color="pink", trueColor="blue", activity="video games", music="kpop")
-    devin = Person(email = "devin@yahoo.com", first_name="Devin", last_name="Martin", color="blue", trueColor="blue", activity="sports", music="pop")
-    mohammed = Person(email = "moha@yahoo.com", first_name="Mohammed", last_name="Ghandour", color="green", trueColor="green", activity="listening to music", music="pop")
-    ryan = Person(email = "ryanjwalsh@yahoo.com", first_name="Ryan", last_name="Walsh", color="orange", trueColor="blue", activity="sports", music="pop")
-    claire = Person(email = "claire@yahoo.com", first_name="Claire", last_name="Yang", color="blue", trueColor="green", activity="watching movies", music="pop")
-    daniel = Person(email = "daniel@yahoo.com", first_name="Daniel", last_name="Daniel", color="orange", trueColor="orange", activity="sporrs", music="pop")
+    michelle = Person(email = "moch@yahoo.com", first_name="Michelle", last_name="Liu", color="pink", trueColor="blue", activity="video games", music="kpop", values="Happiness")
+    devin = Person(email = "devin@yahoo.com", first_name="Devin", last_name="Martin", color="blue", trueColor="blue", activity="sports", music="pop", values="Love")
+    mohammed = Person(email = "moha@yahoo.com", first_name="Mohammed", last_name="Ghandour", color="green", trueColor="green", activity="listening to music", music="pop", values="Money")
+    ryan = Person(email = "ryanjwalsh@yahoo.com", first_name="Ryan", last_name="Walsh", color="orange", trueColor="blue", activity="sports", music="pop", values="Love")
+    claire = Person(email = "claire@yahoo.com", first_name="Claire", last_name="Yang", color="blue", trueColor="green", activity="watching movies", music="pop", values="Happiness")
+    daniel = Person(email = "daniel@yahoo.com", first_name="Daniel", last_name="Daniel", color="orange", trueColor="orange", activity="sporrs", music="pop", values="Happiness")
     michelle.put()
     devin.put()
     mohammed.put()
@@ -125,12 +139,13 @@ class ResultPage(webapp2.RequestHandler):
     daniel.put()
 
     def post(self):
-        firstName = self.request.get("fname")
-        lastName = self.request.get("lname")
+        firstName = self.request.get("fname").strip(" ")
+        lastName = self.request.get("lname").strip(" ")
         favColor = self.request.get("color") #if u only have this line, does not go back to page
         trueColor = self.request.get("TrueColor")
         favActivity = self.request.get("activity")
         music = self.request.get("music")
+        values = self.request.get("values")
         user = users.get_current_user()
         email_address = user.nickname()
         if user:
@@ -142,6 +157,7 @@ class ResultPage(webapp2.RequestHandler):
             current_user.trueColor= trueColor
             current_user.activity= favActivity
             current_user.music=music
+            current_user.values = values
             vibesList= getVibes(current_user) #list of tuples in order that have ppl's name, and similarity index
             print(vibesList)
             current_user.put()
@@ -151,24 +167,31 @@ class ResultPage(webapp2.RequestHandler):
         #         noacc_user.put()
 
         data_dict = {
-            "top_one": vibesList[1][0],
+            "top_one": vibesList[1][0], #problem: doesnt send the obj itself , this sends only first and last name
             #"lenVibes": len(vibesList[0][1]),
+            #"fNametop_one": firstNameOnly(vibesList[1][0]),
             "vibesList": vibesList,
             "x1": str(round(((float((vibesList[1][1])*100))/6),2)),
             "second":  vibesList[2][0],
+            #"fsecond": firstNameOnly(vibesList[2][0]),
             "x2": str(round(((float((vibesList[1][1])*100))/6),2)),
             "third":  vibesList[3][0],
+            #"fthird": firstNameOnly(vibesList[3][0]),
             "x3": str(round(((float((vibesList[1][1])*100))/6),2)),
             "fourth":  vibesList[4][0],
+            #"ffourth": firstNameOnly(vibesList[4][0]),
             "x4": str(round(((float((vibesList[1][1])*100))/6),2)),
-
             "bottom": vibesList[len(vibesList)-1][0],
+            #"fbottom": firstNameOnly(vibesList[len(vibesList)-1][0]),
             "x5": str(round(((float((vibesList[len(vibesList)-1][1])*100))/6),2)),
             "secondBot":vibesList[len(vibesList)-2][0],
+            #"fsecondBot": firstNameOnly(vibesList[len(vibesList)-2][0]),
             "x6": str(round(((float((vibesList[len(vibesList)-2][1])*100))/6),2)),
             "thirdBot":vibesList[len(vibesList)-3][0],
+            #"fthirdBot": firstNameOnly(vibesList[len(vibesList)-3][0]),
             "x7": str(round(((float((vibesList[len(vibesList)-3][1])*100))/6),2)),
             "fourthBot":vibesList[len(vibesList)-4][0],
+            #"ffourthBot": firstNameOnly(vibesList[len(vibesList)-4][0]),
             "x8": str(round(((float((vibesList[len(vibesList)-4][1])*100))/6),2))
 
         }
@@ -272,13 +295,23 @@ class Register(webapp2.RequestHandler):
 
 class Profile(webapp2.RequestHandler):
     def get(self):
+        key = self.request.get_all("key")
+        name= key[0].split(' ')
+        profilePerson = Person.query().filter(Person.first_name ==name[0] and Person.last_name == name[1]).get() # gets the right obj now!!
         #goal - when you click profile, it populates it with the profile of the person you clicked on/ yourself???
-        profile_template = {
+        profile_dict = {
+            "firstName": profilePerson.first_name,
+            "lastName": profilePerson.last_name, #finish this!!
+            "color":profilePerson.color,
+            "trueColor":profilePerson.trueColor,
+            "activity":profilePerson.activity,
+            "music":profilePerson.music,
+            "values": profilePerson.values
 
         }
 
         profile_template = jinja_env.get_template("/html/profile.html")
-        self.response.write(register_template.render(profile_template))
+        self.response.write(profile_template.render(profile_dict))
 
 #initialization
 app = webapp2.WSGIApplication(

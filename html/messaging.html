@@ -6,25 +6,34 @@
   </head>
   <body>
     <h1>Discussion Page</h1>
-
     <h2>Name:</h2>
 
-  <ul id="messages"></ul>
-  <div/>
+<!-- <div class="container darker">
+
+  <span class="time-left">11:01</span>
+</div>
+
+<div class="container">
+
+  <span class="time-right">11:02</span>
+</div>
+
+<div class="container darker">
+  <span class="time-left">11:05</span>
+</div> -->
+  {%for i in messages%}
+<div class="container">
   <div id="messages">
-    {%for i in messages%}
-    <div>
-      <br>
+  <ul></ul>
       <br>
     {{name}}: {{i}}
     <br>
-    <br>
-    <br>
+  </div>
+  </div>
     {%endfor%}
-  </div>
     <br>
-    <br>
-  </div>
+
+
   <form method="post" action="/messaging">
 
     <input type="text" name="text"/>
