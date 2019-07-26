@@ -6,3 +6,28 @@ h1{
   text-align: center;
   font-size: 50px;
 }
+body{
+  background-color:skyblue;
+}
+
+.btm{
+  background-color: red;
+  border:
+  color: white;
+  padding: 20px 32px;
+  text-align: center;
+  text-decoration:none;
+  display: inline-block;
+  font-size: 20px;
+}
+
+.lbutton{
+  background-color:grey;
+  border: none;
+  color: black;
+  padding: 20px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
