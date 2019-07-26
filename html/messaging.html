@@ -22,12 +22,10 @@
 </div> -->
   {%for i in messages%}
 <div class="container">
-  <div id="messages">
   <ul></ul>
       <br>
-    {{name}}: {{i}}
+    <a href="/profile?key={{fname}}%20{{lname}} "> {{fname}} </a> : {{i}}
     <br>
-  </div>
   </div>
     {%endfor%}
     <br>
