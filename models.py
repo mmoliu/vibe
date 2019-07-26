@@ -10,6 +10,8 @@ class Person(ndb.Model):
     trueColor = ndb.StringProperty(required=True)
     activity = ndb.StringProperty(required=True)
     music = ndb.StringProperty(required=True)
+    values = ndb.StringProperty(required=True)
+
 
 
 class Message(ndb.Model):
