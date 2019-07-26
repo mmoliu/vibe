@@ -5,39 +5,52 @@
     <title>Register Page</title>
   </head>
 <body>
-  <h1 class = "Register">Register to VIBE here!</h1>
+
+  <!-- multistep form -->
+  <form id="msform">
+
+    <!-- fieldsets -->
+    <fieldset>
+      <p class="fs-title">Register</p>
+      <a href="/"> <h3 class="fs-subtitle">Home</h3> </a>
+      <!-- <input type="text" name="email" placeholder="You are a new user, please register." /> -->
+      {%if user%}
+      {%if not existing_user %}
+        Thank you for registering!
+    {%endif%}
+    <p>You are now logged in!</p>
+    <a class ="button" href="{{logout_url}}"> Logout! </a>
+    {%else%}
+    <!-- </div> -->
+    <p>You are a new user, please provide info!</p>
+    <br>
+    <div class="div2">
+    <a class= "lbutton" href="{{login_url}}"> Login! </a>
+    <br>
+    <br>
+    </div>
+    <br>
+    <br>
+
+    {%endif%}
+    <!-- <div class="div3"> -->
+      <!-- <input type="password" name="cpass" placeholder="Confirm Password" /> -->
+      <!-- <input type="button" name="next" class="next action-button" value="Next" /> -->
+    </fieldset>
+
+  </form>
 
   </head>
 
   <body>
 
-  <div class="div1">
-    {%if user%}
-    {%if not existing_user %}
-      Thank you for registering!
-  {%endif%}
-  <p>You are now logged in!</p>
   <!-- <div class="div1"> -->
 
-  <a class ="obutton" href="{{logout_url}}"> Logout! </a>
-  {%else%}
-  <!-- </div> -->
-  <p>You are a new user, please provide info!</p>
-  <br>
-  <div class="div2">
-  <a class= "lbutton" href="{{login_url}}"> Login! </a>
-  <br>
-  <br>
-  </div>
-  <br>
-  <br>
+  <!-- <div class="div1"> -->
 
-  {%endif%}
-  <!-- <div class="div3"> -->
-  <br>
-   <a class = "btm" href="/"> Back to home page! </a>
+
   <!-- </div> -->
-  </div>
+  <!-- </div> -->
     <!-- {%if user%}
     {%if not existing_user %}
         Thank you for registering!

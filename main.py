@@ -271,6 +271,8 @@ class Register(webapp2.RequestHandler):
                     trueColor="None",
                     activity="None",
                     music = "None",
+                    career ="None",
+                    values="None"
 
                 )
                 current_user.put()
