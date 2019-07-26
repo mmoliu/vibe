@@ -9,6 +9,7 @@ body {
   line-height: 1.5;
   font-family: 'Open Sans', sans-serif;
   overflow-x: hidden;
+  color: white;
 }
 
 ol, ul {
@@ -243,6 +244,7 @@ p {
 h3.txt-tl {
   font-size: 24px;
   line-height: 1.35;
+  color: black;
 }
 
 /****/
