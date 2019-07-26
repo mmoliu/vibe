@@ -14,11 +14,11 @@ html {
 }
 
 body {
-	font-family: montserrat, arial, verdana;
+	margin-top: 135px;
 }
 /*form styles*/
 #msform {
-	width: 400px;
+	width: 500px;
 	margin: 50px auto;
 	text-align: center;
 	position: relative;
@@ -26,7 +26,7 @@ body {
 #msform fieldset {
 	background: white;
 	border: 0 none;
-	border-radius: 3px;
+	border-radius: 5px;
 	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 	padding: 20px 30px;
 	box-sizing: border-box;
@@ -48,7 +48,6 @@ body {
 	margin-bottom: 10px;
 	width: 100%;
 	box-sizing: border-box;
-	font-family: montserrat;
 	color: #2C3E50;
 	font-size: 13px;
 }
@@ -69,16 +68,18 @@ body {
 }
 /*headings*/
 .fs-title {
-	font-size: 15px;
-	text-transform: uppercase;
+	font-size: 60px;
 	color: #2C3E50;
 	margin-bottom: 10px;
+  font-family: Montserrat;
 }
 .fs-subtitle {
 	font-weight: normal;
-	font-size: 13px;
+	font-size: 40px;
 	color: #666;
 	margin-bottom: 20px;
+  font-family:Montserrat;
+
 }
 /*progressbar*/
 #progressbar {
@@ -128,4 +129,24 @@ body {
 #progressbar li.active:before,  #progressbar li.active:after{
 	background: #27AE60;
 	color: white;
+}
+
+p{
+  font-size: 40px;
+  color: #2C3E50;
+  margin-bottom: 10px;
+  font-family: Montserrat;
+}
+.button{
+  font-weight: normal;
+  font-size: 40px;
+  color: #666;
+  margin-bottom: 20px;
+  font-family: Montserrat;
+}
+.lbutton{
+  font-weight: normal;
+  font-size: 40px;
+  color: #666;
+  margin-bottom: 20px;
 }
