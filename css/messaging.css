@@ -1,8 +1,11 @@
 h1{
   font-size: 60px;
+  text-align: center;
+  font-style: italic;
 }
 h2{
   font-style: italic;
+  font-size: 30px;
 }
 
 body {
@@ -12,8 +15,28 @@ body {
   background-repeat: space;
   background-image: url("photographer.jpg"); /* The image used */
   background-color: skyblue; /* Used if the image is unavailable */
-  height: 500px; /* You must set a specified height */
+  height: 100%; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+  background-size:auto; /* Resize the background image to cover the entire container */
+  /* overflow:scroll; width:100%; height:100%;"> */
+  ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 100%;
+}
+}
+#messages{
+  font-size: 15px;
+  text-decoration:underline;
+  text-indent: 10px;
+  text-decoration-style:solid;
+  padding-left: 7px;
+  border-left: solid #f2f2f2 16px;
+}
+.container {
+  border: 2px solid #dedede;
+  background-color:yellow;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 5px 0;
 }
