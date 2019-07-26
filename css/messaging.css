@@ -14,7 +14,7 @@ body {
   background: url("w3css.gif");
   background-repeat: space;
   background-image: url("photographer.jpg"); /* The image used */
-  background-color: skyblue; /* Used if the image is unavailable */
+  background-color: orange; /* Used if the image is unavailable */
   height: 100%; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
