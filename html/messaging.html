@@ -2,40 +2,147 @@
 <html>
   <head>
     <title>Discusion Vibe Page</title>
-    <link rel="stylesheet" type="text/css" href="../css/messaging.css"/>
+
+    <script type="text/javascript">
+    function moveWin()
+    {
+      window.scroll(0,10000);
+      setTimeout('moveWin();',1000);
+    }
+    </script>
   </head>
-  <body>
-    <h1>Discussion Page</h1>
-
-<!-- <div class="container darker">
-
-  <span class="time-left">11:01</span>
+  <body onLoad="moveWin();">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/messaging.css"/>
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+    </style>
+    <body class="w3-light-grey">
+      <footer class="w3-container w3-teal w3-center w3-margin-top">
+        <h1> Discussion Page. </h1>
+        <!-- <i class="fa fa-facebook-official w3-hover-opacity"></i>
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+        <i class="fa fa-snapchat w3-hover-opacity"></i>
+        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fa fa-twitter w3-hover-opacity"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i> -->
+        <!-- <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p> -->
+      </footer>
+      <div class="tab">
+  <button class="tablinks" onclick="window.location.href = '/'">Home</button>
+  <button class="tablinks" onclick="window.location.href = '/vibe'">Vibe</button>
+  <button class="tablinks" onclick="window.location.href = '/register'">Account</button>
 </div>
 
-<div class="container">
-
-  <span class="time-right">11:02</span>
+<!-- Tab content -->
+<!-- <div id="London" class="tabcontent">
+  <h3>London</h3>
+  <p>London is the capital city of England.</p>
 </div>
 
-<div class="container darker">
-  <span class="time-left">11:05</span>
+<div id="Paris" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p>
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
 </div> -->
-  {%for i in messages%}
-<div class="container">
-  <ul></ul>
-      <br>
-    <a href="/profile?key={{fname}}%20{{lname}} "> {{fname}} </a> : {{i}}
-    <br>
-  </div>
-    {%endfor%}
-    <br>
+
+    <!-- Page Container -->
+    <div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+      <!-- The Grid -->
+      <div class="w3-row-padding">
+
+        <!-- Left Column -->
+        <div class="w3-third">
+
+          <div class="w3-white w3-text-grey w3-card-4">
+            <div class="w3-display-container">
+              <!-- <img src="/w3images/avatar_hat.jpg" style="width:100%" alt="Avatar"> -->
+
+              <h2>{{firstName}} {{lastName}}</h2>
+              <div class="w3-display-bottomleft w3-container w3-text-black">
 
 
-  <form method="post" action="/messaging">
 
-    <input type="text" name="text"/>
-    </form>
+              </div>
+            </div>
+          </div><br>
 
-    <script src="../js/messaging.js"></script>
+        <!-- End Left Column -->
+        </div>
+
+        <!-- Right Column -->
+
+
+          <div class="w3-container w3-card w3-white w3-margin-bottom">
+            <h2 class="w3-text-grey"><i class="fa fa-asterisk fa-fw w3-xxlarge w3-text-teal"></i>Vibe.</h2>
+            <div class="w3-container">
+              <h5 class="w3-opacity"><b>{{career}}</b></h5>
+              {%for i in messages%}
+            <div class="container">
+              <ul></ul>
+                  <br>
+                <a href="/profile?key={{fname}}%20{{lname}} "> {{fname}} </a> : {{i}}
+                <br>
+              </div>
+                {%endfor%}
+                <br>
+
+
+              <form method="post" action="/messaging">
+
+                <input type="text" name="text"/>
+                </form>
+            </div>
+            <!-- <div class="w3-container">
+              <h5 class="w3-opacity"><b>Web Developer / something.com</b></h5>
+              <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
+              <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+              <hr>
+            </div>
+            <div class="w3-container">
+              <h5 class="w3-opacity"><b>Graphic Designer / designsomething.com</b></h5>
+              <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
+            </div>
+          </div>
+
+          <div class="w3-container w3-card w3-white">
+            <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+            <div class="w3-container">
+              <h5 class="w3-opacity"><b>W3Schools.com</b></h5>
+              <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Forever</h6>
+              <p>Web Development! All I need to know in one place</p>
+              <hr>
+            </div>
+            <div class="w3-container">
+              <h5 class="w3-opacity"><b>London Business School</b></h5>
+              <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2013 - 2015</h6>
+              <p>Master Degree</p>
+              <hr>
+            </div>
+            <div class="w3-container">
+              <h5 class="w3-opacity"><b>School of Coding</b></h5>
+              <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2010 - 2013</h6>
+              <p>Bachelor Degree</p><br>
+            </div> -->
+          </div>
+
+
+
+      <!-- End Grid -->
+      </div>
+
+      <!-- End Page Container -->
+    </div>
+
   </body>
 </html>
