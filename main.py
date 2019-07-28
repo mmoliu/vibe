@@ -328,8 +328,10 @@ class Places(webapp2.RequestHandler):
         places_template = jinja_env.get_template("/html/places.html")
         self.response.write(places_template.render())
 
-
-
+class PlacesRedirect(webapp2.RequestHandler):
+    def get(self):
+        places_template = jinja_env.get_template("/html/placesPages.html")
+        self.response.write(places_template.render())
 #initialization
 app = webapp2.WSGIApplication(
     [
@@ -340,7 +342,8 @@ app = webapp2.WSGIApplication(
     ('/register', Register),
     ('/messaging', DiscussionPage),
     ('/profile', Profile),
-    ('/discover', Places)
+    ('/discover', Places).
+    ('/places', PlacesRedirect)
     ], debug = True
 
     #when you load up your application, and it ends w slash, this class should be handling all requests
