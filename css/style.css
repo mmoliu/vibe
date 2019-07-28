@@ -22,6 +22,9 @@ body {
   color: #FFAB00;
   cursor: pointer;
 }
+.container{
+  text-orientation: sideways-right;
+}
 .nav-link {
   margin-right: 1em !important;
 }
