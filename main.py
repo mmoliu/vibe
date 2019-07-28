@@ -110,7 +110,7 @@ class Vibe(webapp2.RequestHandler):
                 pass
             self.response.write("You are logged in " + email_address +"!")
         else:
-            redirect = '<meta http-equiv="Refresh" content="0.5; url=/register">'
+            redirect = '<meta http-equiv="Refresh" content="0.0; url=/register">'
 
         meta_data ={
          "redirect": redirect,
@@ -210,10 +210,10 @@ class Video(webapp2.RequestHandler):
 class DiscussionPage(webapp2.RequestHandler):
     global MESSAGE_PARENT
     def get(self):
-        message_query = Message.query(ancestor=MESSAGE_PARENT).order(Message.created).fetch()
-        list_of_keys = ndb.put_multi(message_query)
-        list_of_entities = ndb.get_multi(list_of_keys)
-        ndb.delete_multi(list_of_keys)
+        # message_query = Message.query(ancestor=MESSAGE_PARENT).order(Message.created).fetch()
+        # list_of_keys = ndb.put_multi(message_query)
+        # list_of_entities = ndb.get_multi(list_of_keys)
+        # ndb.delete_multi(list_of_keys)
         result_template = jinja_env.get_template("/html/messaging.html")
         self.response.write(result_template.render())
     def post(self):
@@ -228,13 +228,12 @@ class DiscussionPage(webapp2.RequestHandler):
         content=self.request.get("text")
         msg = Message(parent=MESSAGE_PARENT, text = content)
         msg.put()
-        #message_query = Message.query(kind=).fetch() #this is a list
         message_query = Message.query(ancestor=MESSAGE_PARENT).order(Message.created).fetch() #Message.fetch()
-        #need to get the key of a specific one, or make it ordered?
         message = []
         for i in message_query:
             message.append(i.text)
         print(message)
+            #need to get the key of a specific one, or make it ordered?
         text_dict = {
             "messages": message,
             "fname": fname,
@@ -280,9 +279,6 @@ class Register(webapp2.RequestHandler):
 
             #self.response.write("You are logged in! ")
             logout_url = users.create_logout_url('/register')
-            #logout_button = "<a href='%s'> Log out </a>" % users.create_logout_url('/register')
-            #self.response.write("Log out here: <br>"+ logout_button)
-            #self.response.write("You are logged in " + email_address +"!")
         else:
             #self.response.write("You are a new user, please provide info! ")
             login_url = users.create_login_url('/register')
