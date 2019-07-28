@@ -235,17 +235,19 @@ class DiscussionPage(webapp2.RequestHandler):
         for i in message_query:
             message.append(i.text)
         print(message)
+        #redirect = '<meta http-equiv="Refresh" content="0.0; url=/messaging#bottom">' #problem to fix
             #need to get the key of a specific one, or make it ordered?
         text_dict = {
             "messages": message,
             "fname": fname,
             "lname": lname,
+            #"redirect": redirect
         }
 #doesn't perfectly work yet
 
         # query = client.query(kind='Task')
         # query.order = ['-created']
-        result_template = jinja_env.get_template("/html/messaging.html")
+        result_template = jinja_env.get_template("/html/messaging.html/")
         self.response.write(result_template.render(text_dict))
 
 
