@@ -18,4 +18,5 @@ class Person(ndb.Model):
 
 class Message(ndb.Model):
     text = ndb.StringProperty(required=True)
+    name = ndb.StringProperty(required=True)
     created = ndb.DateTimeProperty(auto_now_add=True)
