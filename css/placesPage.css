@@ -1,4 +1,23 @@
 .center{
   text-align: center;
-  font-size: 40px;
+  font-size: 50px;
+  color: white;
+  margin: 160px;
+  background-color: #black;
+  opacity: 0.7;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+  vertical-align:25px;
+  font-family: Futura;
+
+}
+
+body {
+  background-image: url("https://media1.giphy.com/media/xe34scLJEWCaI/giphy.gif?cid=790b76115d3e036b674f526c456fab11&rid=giphy.gif");
+  background-color: #cccccc;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a:link{
+  color: red;
 }
