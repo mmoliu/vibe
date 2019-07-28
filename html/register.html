@@ -16,7 +16,7 @@
       <!-- <input type="text" name="email" placeholder="You are a new user, please register." /> -->
       {%if user%}
       {%if not existing_user %}
-        Thank you for registering!
+        <p> Thank you for registering!</p>
     {%endif%}
     <p>You are now logged in!</p>
     <a class ="button" href="{{logout_url}}"> Logout! </a>

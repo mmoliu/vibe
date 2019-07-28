@@ -125,12 +125,12 @@ class Vibe(webapp2.RequestHandler):
 
 class ResultPage(webapp2.RequestHandler):
     #an initialization of the creator's personalities #COME BACK TO THIS
-    michelle = Person(email = "moch@yahoo.com", first_name="Michelle", last_name="Liu", color="pink", trueColor="blue", activity="video games", music="kpop", values="Happiness", career="Student")
-    devin = Person(email = "devin@yahoo.com", first_name="Devin", last_name="Martin", color="blue", trueColor="blue", activity="sports", music="pop", values="Love", career="Student")
-    mohammed = Person(email = "moha@yahoo.com", first_name="Mohammed", last_name="Ghandour", color="green", trueColor="green", activity="listening to music", music="pop", values="Money", career="Student")
-    ryan = Person(email = "ryanjwalsh@yahoo.com", first_name="Ryan", last_name="Walsh", color="orange", trueColor="blue", activity="sports", music="pop", values="Love", career="Programmer")
-    claire = Person(email = "claire@yahoo.com", first_name="Claire", last_name="Yang", color="blue", trueColor="green", activity="watching movies", music="pop", values="Happiness", career="Student")
-    daniel = Person(email = "daniel@yahoo.com", first_name="Daniel", last_name="Daniel", color="orange", trueColor="orange", activity="sporrs", music="pop", values="Happiness", career="Programmer")
+    michelle = Person(email = "moch@yahoo.com", first_name="Michelle", last_name="Liu", color="pink", trueColor="blue", activity="video games", music="kpop", values="Happiness", career="Student", loco="Detroit")
+    devin = Person(email = "devin@yahoo.com", first_name="Devin", last_name="Martin", color="blue", trueColor="blue", activity="sports", music="pop", values="Love", career="Student",loco="Detroit")
+    mohammed = Person(email = "moha@yahoo.com", first_name="Mohammed", last_name="Ghandour", color="green", trueColor="green", activity="listening to music", music="pop", values="Money", career="Student",loco="Detroit")
+    ryan = Person(email = "ryanjwalsh@yahoo.com", first_name="Ryan", last_name="Walsh", color="orange", trueColor="blue", activity="sports", music="pop", values="Love", career="Programmer",loco="Detroit")
+    claire = Person(email = "claire@yahoo.com", first_name="Claire", last_name="Yang", color="blue", trueColor="green", activity="watching movies", music="pop", values="Happiness", career="Student",loco="Detroit")
+    daniel = Person(email = "daniel@yahoo.com", first_name="Daniel", last_name="Daniel", color="orange", trueColor="orange", activity="sports", music="pop", values="Happiness", career="Programmer",loco="Detroit")
     michelle.put()
     devin.put()
     mohammed.put()
@@ -147,6 +147,7 @@ class ResultPage(webapp2.RequestHandler):
         music = self.request.get("music")
         values = self.request.get("values")
         career = self.request.get("career")
+        location = self.request.get("loco")
         user = users.get_current_user()
         email_address = user.nickname()
         if user:
@@ -160,6 +161,7 @@ class ResultPage(webapp2.RequestHandler):
             current_user.music=music
             current_user.values = values
             current_user.career = career
+            current_user.loco = location
             vibesList= getVibes(current_user) #list of tuples in order that have ppl's name, and similarity index
             print(vibesList)
             current_user.put()
@@ -271,7 +273,8 @@ class Register(webapp2.RequestHandler):
                     activity="None",
                     music = "None",
                     career ="None",
-                    values="None"
+                    values="None",
+                    loco = "None"
 
                 )
                 current_user.put()
@@ -301,7 +304,7 @@ class Profile(webapp2.RequestHandler):
         key = self.request.get_all("key")
         name= key[0].split(' ')
         profilePerson = Person.query().filter(Person.first_name ==name[0] and Person.last_name == name[1]).get() # gets the right obj now!!
-        #goal - when you click profile, it populates it with the profile of the person you clicked on/ yourself???
+        #goal - when you click profile, it populates it with the profile of the person you clicked on/ yourself
         profile_dict = {
             "firstName": profilePerson.first_name,
             "lastName": profilePerson.last_name, #finish this!!
@@ -311,11 +314,19 @@ class Profile(webapp2.RequestHandler):
             "music":profilePerson.music,
             "values": profilePerson.values,
             "career": profilePerson.career,
+            "loco":profilePerson.loco,
 
         }
 
         profile_template = jinja_env.get_template("/html/profile.html")
         self.response.write(profile_template.render(profile_dict))
+
+class Places(webapp2.RequestHandler):
+    def get(self):
+        places_template = jinja_env.get_template("/html/places.html")
+        self.response.write(places_template.render())
+
+
 
 #initialization
 app = webapp2.WSGIApplication(
@@ -326,7 +337,8 @@ app = webapp2.WSGIApplication(
     ('/video', Video),
     ('/register', Register),
     ('/messaging', DiscussionPage),
-    ('/profile', Profile)
+    ('/profile', Profile),
+    ('/discover', Places)
     ], debug = True
 
     #when you load up your application, and it ends w slash, this class should be handling all requests

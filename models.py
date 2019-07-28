@@ -12,6 +12,7 @@ class Person(ndb.Model):
     music = ndb.StringProperty(required=True)
     values = ndb.StringProperty(required=True)
     career = ndb.StringProperty(required=True)
+    loco = ndb.StringProperty(required=True)
 
 
 
