@@ -22,6 +22,7 @@ jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
+jinja_env.globals.update(zip=zip)
 
 # functions!!
 def percentMatch(user, person):
@@ -228,19 +229,21 @@ class DiscussionPage(webapp2.RequestHandler):
             lname = name.last_name
 
         content=self.request.get("text")
-        msg = Message(parent=MESSAGE_PARENT, text = content)
+        msg = Message(parent=MESSAGE_PARENT, text = content, name=fname)
         msg.put()
         message_query = Message.query(ancestor=MESSAGE_PARENT).order(Message.created).fetch() #Message.fetch()
         message = []
+        first_names = []
         for i in message_query:
             message.append(i.text)
-        print(message)
+            first_names.append(i.name)
+
         #redirect = '<meta http-equiv="Refresh" content="0.0; url=/messaging#bottom">' #problem to fix
             #need to get the key of a specific one, or make it ordered?
+        #problem: all text messages end up saying the user's name
         text_dict = {
             "messages": message,
-            "fname": fname,
-            "lname": lname,
+            "fnames": first_names,
             #"redirect": redirect
         }
 #doesn't perfectly work yet

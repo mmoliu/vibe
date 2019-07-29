@@ -20,7 +20,7 @@
   <button class="tablinks" onclick="window.location.href = '/'">Home</button>
   <button class="tablinks" onclick="window.location.href = '/vibe'">Vibe</button>
   <button class="tablinks" onclick="window.location.href = '/register'">Account</button>
-  <button class="tablinks" onclick="window.location.href = '/discover'">Discover</button>
+  <button class="tablinks" onclick="window.location.href = '/places'">Discover</button>
 </div>
 
 <!-- Tab content -->
@@ -71,11 +71,11 @@
             <h2 class="w3-text-grey"><i class="fa fa-asterisk fa-fw w3-xxlarge w3-text-teal"></i>Vibe.</h2>
             <div class="w3-container">
               <h5 class="w3-opacity"><b>{{career}}</b></h5>
-              {%for i in messages%}
+              {%for i, z in zip(messages, fnames)%}
             <div class="container">
               <ul></ul>
                   <br>
-                <a href="/profile?key={{fname}}%20{{lname}} "> {{fname}} </a> : {{i}}
+                <a href="/profile?key={{fname}}%20{{lname}} "> {{z}} </a> : {{i}}
                 <br>
               </div>
                 {%endfor%}
