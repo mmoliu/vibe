@@ -330,7 +330,7 @@ class Places(webapp2.RequestHandler):
 
 class PlacesRedirect(webapp2.RequestHandler):
     def get(self):
-        places_template = jinja_env.get_template("/html/placesPages.html")
+        places_template = jinja_env.get_template("/html/placesPage.html")
         self.response.write(places_template.render())
 #initialization
 app = webapp2.WSGIApplication(
@@ -342,7 +342,7 @@ app = webapp2.WSGIApplication(
     ('/register', Register),
     ('/messaging', DiscussionPage),
     ('/profile', Profile),
-    ('/discover', Places).
+    ('/discover', Places),
     ('/places', PlacesRedirect)
     ], debug = True
 

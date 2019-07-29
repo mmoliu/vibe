@@ -12,6 +12,7 @@ body {
 }
 .cta-infotext-center{
   text-align: center;
+  display: inline-flex;
 }
 /*--- navigation bar ---*/
 .navbar {

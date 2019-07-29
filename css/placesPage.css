@@ -21,3 +21,7 @@ body {
 a:link{
   color: red;
 }
+
+a:visited {
+  color: red;
+}
